@@ -240,7 +240,7 @@ const Signup = (props) => {
           </svg>
           <p>WELCOME TO TECHIT</p>
         </div>
-        <form onSubmit={() => signupMsg()} className="right">
+        <div className="right">
           <div className="top-buttons">
             <Link href="/">
               <button>Home</button>
@@ -249,7 +249,7 @@ const Signup = (props) => {
               <button>Login</button>
             </Link>
           </div>
-          <div className="right-container">
+          <form onSubmit={() => signupMsg()} className="right-container">
             <h2>Create an account</h2>
             <div className="field">
               <p>Username</p>
@@ -278,16 +278,16 @@ const Signup = (props) => {
                 onChange={(e) => setPassword(e.target.value)}
               />
             </div>
-            <div className="field">
+            {/* <div className="field">
               <p>Select a profile picture (optional):</p>
               <input
                 type="file"
                 // onChange={(e) => setImage(e.target.files[0])}
               />
-            </div>
+            </div> */}
             <input type="submit" value="Create account" />
-          </div>
-        </form>
+          </form>
+        </div>
       </div>
     </div>
   );

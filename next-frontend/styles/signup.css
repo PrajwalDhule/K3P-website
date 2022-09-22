@@ -41,7 +41,7 @@ button {
 
 .box {
   height: 90%;
-  width: 60%;
+  width: 65%;
   position: relative;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -181,6 +181,7 @@ button {
           flex-direction: column;
   width: 75%;
   margin-top: 2vh;
+  font-family: "Poppins";
 }
 
 .box .right .right-container p,
@@ -193,7 +194,7 @@ button {
 .box .right .right-container h2 {
   font-weight: 500;
   font-size: 1.9vw;
-  margin: 0.25em 0 0 0;
+  margin: 0.25em 0;
 }
 
 .box .right .right-container .field {
@@ -204,12 +205,12 @@ button {
 
 .box .right .right-container .field p {
   margin: 0.25em 0;
-  font-family: "Poppins";
-  font-size: 90%;
+  font-size: 100%;
 }
 
 .box .right .right-container .field input {
-  padding: 0.85em;
+  font-size: 100%;
+  padding: 0.75em;
   margin-top: 0.5em;
   border: none;
   border-radius: 3px;
@@ -221,11 +222,12 @@ button {
   margin-top: 6vh;
   padding: 0.75em 0;
   font-weight: 500;
+  font-size: 100%;
+  font-family: "Poppins";
   color: white;
   background-color: #2e5fdc;
   border: none;
   border-radius: 3px;
-  font-family: "Poppins";
   cursor: pointer;
 }
 

@@ -47,7 +47,7 @@ button {
 
 .box {
   height: 90%;
-  width: 60%;
+  width: 65%;
   position: relative;
   //   border: 2px solid red;
   @include flex(center);
@@ -131,6 +131,7 @@ button {
       width: 75%;
       // height: 80%;
       margin-top: 2vh;
+      font-family: "Poppins";
       p,
       h2,
       input,
@@ -140,7 +141,7 @@ button {
       h2 {
         font-weight: 500;
         font-size: 1.9vw;
-        margin: 0.25em 0 0 0;
+        margin: 0.25em 0;
       }
       .field {
         width: 100%;
@@ -148,11 +149,11 @@ button {
         font-weight: 400;
         p {
           margin: 0.25em 0;
-          font-family: "Poppins";
-          font-size: 90%;
+          font-size: 100%;
         }
         input {
-          padding: 0.85em;
+          font-size: 100%;
+          padding: 0.75em;
           margin-top: 0.5em;
           border: none;
           border-radius: 3px;
@@ -163,11 +164,12 @@ button {
         margin-top: 6vh;
         padding: 0.75em 0;
         font-weight: 500;
+        font-size: 100%;
+        font-family: "Poppins";
         color: white;
         background-color: $blue;
         border: none;
         border-radius: 3px;
-        font-family: "Poppins";
         cursor: pointer;
         &:hover {
           background-color: $light-blue-2;

@@ -240,7 +240,7 @@ const Login = (props) => {
           </svg>
           <p>WELCOME TO TECHIT</p>
         </div>
-        <form onSubmit={() => loginMsg()} className="right">
+        <div className="right">
           <div className="top-buttons">
             <Link href="/">
               <button>Home</button>
@@ -249,7 +249,7 @@ const Login = (props) => {
               <button>Sign up</button>
             </Link>
           </div>
-          <div className="right-container">
+          <form onSubmit={() => loginMsg()} className="right-container">
             <h2>Login to your account</h2>
             <div className="field">
               <p>Username</p>
@@ -270,8 +270,8 @@ const Login = (props) => {
               />
             </div>
             <input type="submit" value="Log in" />
-          </div>
-        </form>
+          </form>
+        </div>
       </div>
     </div>
   );
