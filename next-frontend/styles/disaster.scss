@@ -1,0 +1,71 @@
+$bg-light-blue: #eff1fd;
+
+@mixin flex($jc) {
+  display: flex;
+  justify-content: $jc;
+  align-items: center;
+}
+
+@mixin grid1() {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+  grid-auto-rows: minmax(25px, auto);
+}
+
+.disaster-body {
+  font-family: "Nunito";
+  height: 100vh;
+  width: 100vw;
+  background-color: $bg-light-blue;
+  padding: 1em 2em 1em calc(20% + 2em);
+  .top {
+    font-size: 1.15rem;
+    font-weight: 500;
+    display: flex;
+    justify-content: left;
+    align-items: flex-start;
+    margin-bottom: 2em;
+    p:nth-child(1) {
+      //   width: 20vw;
+      margin-right: 2em;
+    }
+  }
+  .buttons {
+    display: flex;
+    button {
+      font-weight: 600;
+      margin-top: 1em;
+      padding: 0.75em 1.25em;
+      border: none;
+      border: 3px solid transparent;
+      border-radius: 5px;
+      display: flex;
+      align-items: center;
+      //   filter: drop-shadow(0px 5px 3px rgba(0, 0, 0, 0.15));
+      &:hover {
+        border: 3px solid black;
+        color: rgb(37, 19, 85);
+      }
+      img {
+        height: 1em;
+        margin-right: 0.75em;
+      }
+    }
+    button + button {
+      margin-left: 2em;
+    }
+    button:nth-child(1) {
+      img {
+        transform: rotateZ(180deg);
+      }
+      background-color: transparent;
+    }
+    button:nth-child(2) {
+      background-color: rgb(255, 194, 194);
+    }
+    button:nth-child(3) {
+      background-color: #dbdbff;
+    }
+  }
+}
