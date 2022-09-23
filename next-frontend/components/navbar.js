@@ -3,8 +3,8 @@ import Link from "next/link";
 import Image from "next/image";
 import logo from "../images/logo.png";
 
-const Navbar = () => {
-  const [show, setShow] = useState("show-1");
+const Navbar = (props) => {
+  const [show, setShow] = useState(`show-${props.index}`);
 
   return (
     <div className="nav-body">

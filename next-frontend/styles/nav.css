@@ -1,4 +1,6 @@
 .nav-body {
+  position: absolute;
+  z-index: 3;
   width: 20%;
   height: 100vh;
   border: 1px solid black;
