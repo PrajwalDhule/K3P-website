@@ -1,0 +1,69 @@
+$bg-light-blue: #eff1fd;
+$light-blue: #b0bdff;
+
+@mixin flex($jc) {
+  display: flex;
+  justify-content: $jc;
+  align-items: center;
+}
+
+@mixin grid1() {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+  grid-auto-rows: minmax(25px, auto);
+}
+
+.nav-body {
+  width: 20%;
+  height: 100vh;
+  border: 1px solid black;
+  background-color: white;
+  display: flex;
+  justify-content: center;
+  Image {
+    height: 50px;
+  }
+  .nav-container {
+    font-family: "Nunito";
+    display: flex;
+    // align-items: flex-start;
+    flex-direction: column;
+    // margin: 1em;
+    margin: 1em 0;
+    width: 80%;
+    span {
+      margin-right: 1em;
+    }
+    .name {
+      @include flex(center);
+      font-weight: 600;
+      p {
+        margin: 0;
+      }
+      margin-bottom: 1.5em;
+    }
+    .nav-items {
+      font-weight: 600;
+      list-style: none;
+      width: 100%;
+      li {
+        cursor: pointer;
+        @include flex(left);
+        margin-bottom: 0.75em;
+        border-radius: 8px;
+        p {
+          align-self: center;
+          margin: 0;
+        }
+        padding: 0.75em 1em;
+      }
+      .show-1-1,
+      .show-2-2,
+      .show-3-3,
+      .show-4-4 {
+        background-color: $light-blue;
+      }
+    }
+  }
+}
