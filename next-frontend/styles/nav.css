@@ -1,0 +1,88 @@
+.nav-body {
+  width: 20%;
+  height: 100vh;
+  border: 1px solid black;
+  background-color: white;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.nav-body Image {
+  height: 50px;
+}
+
+.nav-body .nav-container {
+  font-family: "Nunito";
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  margin: 1em 0;
+  width: 80%;
+}
+
+.nav-body .nav-container span {
+  margin-right: 1em;
+}
+
+.nav-body .nav-container .name {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  font-weight: 600;
+  margin-bottom: 1.5em;
+}
+
+.nav-body .nav-container .name p {
+  margin: 0;
+}
+
+.nav-body .nav-container .nav-items {
+  font-weight: 600;
+  list-style: none;
+  width: 100%;
+}
+
+.nav-body .nav-container .nav-items li {
+  cursor: pointer;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: left;
+      -ms-flex-pack: left;
+          justify-content: left;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-bottom: 0.75em;
+  border-radius: 8px;
+  padding: 0.75em 1em;
+}
+
+.nav-body .nav-container .nav-items li p {
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
+  margin: 0;
+}
+
+.nav-body .nav-container .nav-items .show-1-1,
+.nav-body .nav-container .nav-items .show-2-2,
+.nav-body .nav-container .nav-items .show-3-3,
+.nav-body .nav-container .nav-items .show-4-4 {
+  background-color: #b0bdff;
+}
+/*# sourceMappingURL=nav.css.map */
