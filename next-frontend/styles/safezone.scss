@@ -127,6 +127,7 @@ input {
   display: flex;
   justify-content: space-between;
   padding: 1.5em;
+  min-height: 30vh;
   .address {
     max-width: 65%;
     p:nth-child(1) {

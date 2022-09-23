@@ -168,3 +168,13 @@
 .react-switch-label:active .react-switch-button {
   width: 30px;
 }
+.button {
+    align-items: center;
+    /* margin-top: 1em; */
+    padding: 0.5em 1em;
+    background-color: #E0E5FF;
+    border: 1px solid black;
+    border: none;
+    border-radius: 5px;
+    filter: drop-shadow(-2px 2px 5px rgba(0, 0, 0, 0.5));
+}

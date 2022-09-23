@@ -2,28 +2,19 @@ import React, { useState } from "react";
 import Navbar from "../components/navbar";
 import Switch from "./../components/switch";
 import { db } from "./firebase";
-import {
-  getFirestore,
-  addDoc,
-  collection,
-  arrayUnion,
-  GeoPoint,
-  query,
-  where,
-  getDoc,
-  updateDoc,
-  getDocs,
-} from "firebase/firestore";
+import { getFirestore, addDoc, collection, query, getDocs, where } from "firebase/firestore";
+import { async } from "@firebase/util";
+import Link from 'next/link';
 /**
- * 
- * @Params for home crime 
+ *
+ * @Params for home crime
  * crimeType
  * current
  * imageUrl
  * description
  * locationLat
  * locationLong
- * 
+ *
  * @Params for disaster
  * disasterType
  * locationLat
@@ -31,96 +22,46 @@ import {
  * current
  * description
  */
-const alert = () => {
+const alert = ({disasterListfromServer,homeCrimeListfromServer}) => {
   const [cityEntered, setCityEntered] = useState("");
   const [disasterType, setDisasterType] = useState(true);
-  const [disasterList, setDisasterList] = useState(
-    [
-      {
-      disasterType:"Earthquake",
-      locationLat:19.03,
-      locationLong:-12.22,
-      current:false,
-      description:"Bohot darawana tha",
-      }, 
-      {
-      disasterType:"Earthquake",
-      locationLat:19.03,
-      locationLong:-12.22,
-      current:false,
-      description:"Bohot darawana tha",
-      }, 
-      {
-      disasterType:"Earthquake",
-      locationLat:19.03,
-      locationLong:-12.22,
-      current:false,
-      description:"Bohot darawana tha",
-      }, 
-      {
-      disasterType:"Earthquake",
-      locationLat:19.03,
-      locationLong:-12.22,
-      current:false,
-      description:"Bohot darawana tha",
-      }, 
-      {
-      disasterType:"Earthquake",
-      locationLat:19.03,
-      locationLong:-12.22,
-      current:false,
-      description:"Bohot darawana tha",
-      }
-    ]
-    
-    );
-  const [homeCrimeList, setHomeCrimeList] = useState(
-    [
-      {
-        crimeType:"Robbery",
-        current:false,
-        imageurl:"",
-        description:"baju wale ke ghar pe hua, aacha hua :)",
-        locationLat:19.90,
-        locationLong:-12.22
-      },
-      {
-        crimeType:"Robbery",
-        current:false,
-        imageurl:"",
-        description:"baju wale ke ghar pe hua, aacha hua :)",
-        locationLat:19.90,
-        locationLong:-12.22
-      },
-      {
-        crimeType:"Robbery",
-        current:false,
-        imageurl:"",
-        description:"baju wale ke ghar pe hua, aacha hua :)",
-        locationLat:19.90,
-        locationLong:-12.22
-      },
-      {
-        crimeType:"Robbery",
-        current:false,
-        imageurl:"",
-        description:"baju wale ke ghar pe hua, aacha hua :)",
-        locationLat:19.90,
-        locationLong:-12.22
-      }
-    ]);
+  const [disasterList, setDisasterList] = useState(disasterListfromServer);
+  const [homeCrimeList, setHomeCrimeList] = useState(homeCrimeListfromServer);
+
+  let getLatestDataDisaster = async () =>  {
+    const q = query(collection(db, "disaster"));
+    // if(cityEntered != "") q = query(collection(db,"disaster"),where("city","==",cityEntered));
+  
+    const querySnapshot = await getDocs(q);
+    console.log(querySnapshot.docs.length)
+    var tmpDisaster = [];
+    querySnapshot.forEach((doc) => {
+      tmpDisaster.push(doc.data());
+    });
+    console.log(tmpDisaster);
+    setDisasterList(tmpDisaster);
+  }
+  let getLatestDataHomeCrime = async () =>  {
+    const q = query(collection(db, "homeCrime"));
+    // if(cityEntered != "") q = query(collection(db,"disaster"),where("city","==",cityEntered));
+  
+    const querySnapshot = await getDocs(q);
+    console.log(querySnapshot.docs.length)
+    var tmpHomeCrime = [];
+    querySnapshot.forEach((doc) => {
+      tmpHomeCrime.push(doc.data());
+    });
+    console.log(tmpHomeCrime);
+    setHomeCrimeList(tmpHomeCrime);
+  }
   function DisasterList() {
     return (
       <div>
         {disasterList.map((item) => {
           return (
             <div className="card">
-              <div className="card-title">
-                {item.disasterType}
-              </div>
-              <div className="card-description">
-                {item.description}
-              </div>
+              <div className="card-title"> <Link href={"/disaster/"+item.ID}>{item.data.disasterType}</Link></div>
+              <div className="card-description">{item.data.description}</div>
             </div>
           );
         })}
@@ -133,12 +74,8 @@ const alert = () => {
         {homeCrimeList.map((item) => {
           return (
             <div className="card">
-              <div className="card-title">
-                {item.crimeType}
-              </div>
-              <div className="card-description">
-                {item.description}
-              </div>
+              <div className="card-title">{item.data.crimeType}</div>
+              <div className="card-description">{item.data.description}</div>
             </div>
           );
         })}
@@ -149,16 +86,22 @@ const alert = () => {
     if (disasterType)
       return (
         <div className="alert-list-container">
-          <DisasterList />
-        </div>
-      );
-    else
-      return (
-        <div className="alert-list-container">
           <HomeCrimeList />
         </div>
       );
+    else
+    return (
+      <div className="alert-list-container">
+          <DisasterList />
+        </div>
+      );
   }
+
+  let submitQuery = (e) =>{
+      if(disasterType) getLatestDataDisaster();
+      else getLatestDataHomeCrime();
+  }
+  // getLatestDataDisaster();
   return (
     <div style={{ width: "100vw", height: "100vh" }} className="alert-body">
       <Navbar index="2" />
@@ -185,7 +128,7 @@ const alert = () => {
                 )}
               </div> */}
           </div>
-          <div>Submit</div>
+          <div className="button" onClick={(e)=>submitQuery(e)}>Submit</div>
           <div>Disaster</div>
           <div style={{ display: "flex", alignItems: "center" }}>
             <Switch
@@ -202,3 +145,42 @@ const alert = () => {
 };
 
 export default alert;
+
+
+
+export async function getServerSideProps(context) {
+  // const res = await axios.get(
+  //   "http://localhost:4000/api/getvendingzones/search"
+  // );
+  // // console.log(res);
+  // const data = await JSON.parse(JSON.stringify(res.data));
+  const q = query(collection(db, "disaster"));
+  
+  const querySnapshot = await getDocs(q);
+  console.log(querySnapshot.docs.length)
+  var tmpDisaster = [];
+  querySnapshot.forEach((doc) => {
+    // doc.data() is never undefined for query doc snapshots
+    // console.log(doc.id, " => ", doc.data());
+    tmpDisaster.push({ID:doc.id,data:doc.data()});
+  });
+  console.log(tmpDisaster);
+  const q2 = query(collection(db, "homeCrime"));
+  
+  const querySnapshot2 = await getDocs(q2);
+  console.log(querySnapshot2.docs.length)
+  var tmpHomeCrime = [];
+  querySnapshot2.forEach((doc) => {
+    // doc.data() is never undefined for query doc snapshots
+    // console.log(doc.id, " => ", doc.data());
+    tmpHomeCrime.push({ID:doc.id,data:doc.data()});
+  });
+  console.log(tmpHomeCrime);
+  // setDisasterList(tmpDisaster);
+  return {
+    props: {
+      disasterListfromServer: tmpDisaster,
+      homeCrimeListfromServer: tmpHomeCrime
+    },
+  };
+}
