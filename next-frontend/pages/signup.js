@@ -1,5 +1,10 @@
 import React, { useState, useContext, useEffect } from "react";
 import Link from "next/link";
+// import { FirebaseApp } from "firebase/app";
+import {db} from "./firebase";
+import { getFirestore, addDoc, collection } from "firebase/firestore";
+import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
+import { async } from "@firebase/util";
 
 const Signup = (props) => {
   const [userName, setUserName] = useState("");
@@ -9,7 +14,33 @@ const Signup = (props) => {
   const [url, setUrl] = useState(undefined);
 
   const signupMsg = () => {
-    alert("signed in!");
+    const auth = getAuth();
+    createUserWithEmailAndPassword(auth, email, password)
+      .then(async(userCredential) => {
+        // Signed in 
+        const user = userCredential.user;
+        console.log(user);
+        try {
+          const docRef = await addDoc(collection(db, "authorities"), {
+            authorityID:user.uid,
+            authorityEmail:email,
+            authorityName:userName,
+            authorityZone:"Mumbai",
+          });
+          console.log("Document written with ID: ", docRef.id);
+        } catch (e) {
+          console.error("Error adding document: ", e);
+        }
+
+        
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        console.log(errorCode);
+        console.log(errorMessage);
+        // ..
+      });
   };
 
   return (
@@ -249,7 +280,10 @@ const Signup = (props) => {
               <button>Login</button>
             </Link>
           </div>
-          <form onSubmit={() => signupMsg()} className="right-container">
+          <form onSubmit={(e) => {
+              e.preventDefault();
+              signupMsg()
+            }} className="right-container">
             <h2>Create an account</h2>
             <div className="field">
               <p>Username</p>
