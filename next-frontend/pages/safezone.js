@@ -12,8 +12,19 @@ import {
   Autocomplete,
 } from "@react-google-maps/api";
 import Geocode, { setApiKey } from "react-geocode";
-import {db} from "./firebase";
-import { getFirestore, addDoc, collection, arrayUnion, GeoPoint, query, where, getDoc, updateDoc, getDocs } from "firebase/firestore";
+import { db } from "./firebase";
+import {
+  getFirestore,
+  addDoc,
+  collection,
+  arrayUnion,
+  GeoPoint,
+  query,
+  where,
+  getDoc,
+  updateDoc,
+  getDocs,
+} from "firebase/firestore";
 
 const Safezone = () => {
   const [filteredData, setFilteredData] = useState([]);
@@ -33,7 +44,7 @@ const Safezone = () => {
     height: "400px",
     width: "900px",
     marginTop: "20px",
-    marginLeft: "200px"
+    marginLeft: "200px",
   };
 
   const [center, setCenter] = React.useState({
@@ -45,7 +56,7 @@ const Safezone = () => {
     lng: -122.214,
   });
 
-  const uploadSafeZone = async() =>{
+  const uploadSafeZone = async () => {
     console.log(eventID);
     console.log(address);
     console.log(city);
@@ -56,14 +67,14 @@ const Safezone = () => {
     try {
       const docRef = await addDoc(collection(db, "safezone"), {
         eventID,
-        safeZone: {address,city,zone},
-        safeZoneLatLong:  new GeoPoint(center.lat,center.lng),
+        safeZone: { address, city, zone },
+        safeZoneLatLong: new GeoPoint(center.lat, center.lng),
       });
       console.log("Document updated with ID: ", docRef.id);
     } catch (e) {
       console.error("Error adding document: ", e);
     }
-  }
+  };
 
   const handleFilter = (event) => {
     const searchWord = event.target.value;
@@ -82,7 +93,6 @@ const Safezone = () => {
     setFilteredData([]);
     setWordEntered("");
   };
-
 
   return (
     <div className="safezone-body">
@@ -125,22 +135,9 @@ const Safezone = () => {
             </div>
           )}
         </div>
-        <select
-          value={category}
-          onChange={(e) => setCategory(e.target.value)}
-          data-placeholder="Choose category"
-          required
-        >
-          <option value=""></option>
-          <option>Mumbai</option>
-          <option>Pune</option>
-          <option>Jaipur</option>
-          <option>Bangalore</option>
-        </select>
       </div>
 
       <div className="safe-zone-main-container" style={{ marginLeft: "20%" }}>
-
         <LoadScript
           googleMapsApiKey="AIzaSyClwDKfzGV_7ICoib-lk2rH0iw5IlKW5Lw"
           libraries={["places"]}
@@ -158,14 +155,29 @@ const Safezone = () => {
               ).then(
                 (response) => {
                   var locality = "";
-                  for (let i = 0; i < response.results[0].address_components.length; i++) {
-                    for (let j = 0; j < response.results[0].address_components[i].types.length; j++) {
-                      switch (response.results[0].address_components[i].types[j]) {
+                  for (
+                    let i = 0;
+                    i < response.results[0].address_components.length;
+                    i++
+                  ) {
+                    for (
+                      let j = 0;
+                      j <
+                      response.results[0].address_components[i].types.length;
+                      j++
+                    ) {
+                      switch (
+                        response.results[0].address_components[i].types[j]
+                      ) {
                         case "locality":
-                          setCity(response.results[0].address_components[i].long_name);
+                          setCity(
+                            response.results[0].address_components[i].long_name
+                          );
                           break;
                         case "sublocality":
-                          locality += response.results[0].address_components[i].long_name + " ";
+                          locality +=
+                            response.results[0].address_components[i]
+                              .long_name + " ";
                           break;
                       }
                     }
@@ -181,9 +193,7 @@ const Safezone = () => {
               );
             }}
           >
-            <Autocomplete
-
-            >
+            <Autocomplete>
               <input
                 type="text"
                 placeholder="Enter zone address"
@@ -191,19 +201,36 @@ const Safezone = () => {
                   Geocode.fromAddress(e.target.value).then(
                     (response) => {
                       const { lat, lng } =
-                      response.results[0].geometry.location;         
+                        response.results[0].geometry.location;
                       setPosition({ lat: lat, lng: lng });
                       setCenter({ lat: lat, lng: lng });
                       console.log(response.results[0]);
                       var tmplocality = "";
-                      for (let i = 0; i < response.results[0].address_components.length; i++) {
-                        for (let j = 0; j < response.results[0].address_components[i].types.length; j++) {
-                          switch (response.results[0].address_components[i].types[j]) {
+                      for (
+                        let i = 0;
+                        i < response.results[0].address_components.length;
+                        i++
+                      ) {
+                        for (
+                          let j = 0;
+                          j <
+                          response.results[0].address_components[i].types
+                            .length;
+                          j++
+                        ) {
+                          switch (
+                            response.results[0].address_components[i].types[j]
+                          ) {
                             case "locality":
-                              setCity(response.results[0].address_components[i].long_name);
+                              setCity(
+                                response.results[0].address_components[i]
+                                  .long_name
+                              );
                               break;
                             case "sublocality":
-                              tmplocality += response.results[0].address_components[i].long_name + " ";
+                              tmplocality +=
+                                response.results[0].address_components[i]
+                                  .long_name + " ";
                               break;
                           }
                         }
@@ -243,7 +270,13 @@ const Safezone = () => {
           </GoogleMap>
         </LoadScript>
         <div>{address}</div>
-        <div onClick={(e)=>{uploadSafeZone();}}>Submit</div>
+        <div
+          onClick={(e) => {
+            uploadSafeZone();
+          }}
+        >
+          Submit
+        </div>
       </div>
     </div>
   );

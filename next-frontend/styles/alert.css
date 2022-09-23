@@ -1,4 +1,4 @@
-.safezone-body {
+.alert-body {
   height: 100vh;
   width: 100vw;
   background-color: #eff1fd;
@@ -7,17 +7,17 @@
   z-index: 1;
 }
 
-.safezone-body .top {
+.alert-body .top {
   top: 0;
   position: relative;
   height: 15vh;
 }
 
-.safezone-body .top select {
+.alert-body .top select {
   margin-left: 50vw;
 }
 
-.safezone-body .top .search {
+.alert-body .top .search {
   border: 1px solid black;
   z-index: 1;
   position: absolute;
@@ -31,7 +31,7 @@
   padding: 0.5em;
 }
 
-.safezone-body .top .search .searchInputs {
+.alert-body .top .search .searchInputs {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -43,7 +43,7 @@
           align-items: center;
 }
 
-.safezone-body .top .search .searchInputs input {
+.alert-body .top .search .searchInputs input {
   border: none;
   background-color: transparent;
   font-size: 1rem;
@@ -53,11 +53,11 @@
   color: black;
 }
 
-.safezone-body .top .search .searchInputs input:focus {
+.alert-body .top .search .searchInputs input:focus {
   outline: none;
 }
 
-.safezone-body .top .search .searchIcon {
+.alert-body .top .search .searchIcon {
   width: 50px;
   background-color: transparent;
   display: -ms-grid;
@@ -67,7 +67,7 @@
           transform: translateX(-10%);
 }
 
-.safezone-body .top .search .dataResult {
+.alert-body .top .search .dataResult {
   display: none;
   margin-top: 5px;
   width: 100%;
@@ -81,7 +81,7 @@
   border: 1px solid black;
 }
 
-.safezone-body .top .search .dataResult .dataItem {
+.alert-body .top .search .dataResult .dataItem {
   width: 100%;
   height: 50px;
   display: -webkit-box;
@@ -93,15 +93,15 @@
   color: black;
 }
 
-.safezone-body .top .search .dataResult .dataItem p {
+.alert-body .top .search .dataResult .dataItem p {
   margin-left: 10px;
 }
 
-.safezone-body .top .search:hover .dataResult {
+.alert-body .top .search:hover .dataResult {
   display: block;
 }
 
-.safezone-body .chart {
+.alert-body .chart {
   width: 95%;
   position: absolute;
   top: 55%;
@@ -125,4 +125,4 @@ p:hover {
 #clearBtn {
   cursor: pointer;
 }
-/*# sourceMappingURL=safezone.css.map */
+/*# sourceMappingURL=alert.css.map */

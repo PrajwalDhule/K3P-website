@@ -1,0 +1,108 @@
+$bg-light-blue: #eff1fd;
+
+@mixin flex($jc) {
+  display: flex;
+  justify-content: $jc;
+  align-items: center;
+}
+
+@mixin grid1() {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+  grid-auto-rows: minmax(25px, auto);
+}
+
+.dashboard-body {
+  font-family: "Nunito";
+  height: 100vh;
+  width: 100vw;
+  background-color: $bg-light-blue;
+  .container {
+    padding: 2.5% 5% 0 25%;
+    .filters {
+      @include flex(left);
+
+      .filter {
+        background-color: white;
+        padding: 0.5em;
+        margin-right: 1em;
+        border-radius: 5px;
+        div {
+          @include flex(left);
+        }
+      }
+    }
+    .content {
+      margin-top: 1.5rem;
+      width: 70vw;
+      display: grid;
+      gap: 1.5rem;
+      grid-auto-columns: 1fr;
+      .box {
+        background-color: white;
+        height: 20vh;
+        position: relative;
+        border-radius: 5px;
+        padding: 1em;
+        width: 100%;
+        .title {
+          position: absolute;
+          top: 8px;
+          left: 8px;
+        }
+        div {
+          p {
+            text-align: center;
+          }
+          font-weight: 500;
+          p:nth-child(1) {
+            font-size: 1.5rem;
+            font-weight: 500;
+          }
+          p:nth-child(2) {
+            font-size: 1.25rem;
+            font-weight: 400;
+          }
+        }
+      }
+
+      .box:nth-child(1) {
+        grid-area: one;
+      }
+      .box:nth-child(2) {
+        grid-area: two;
+      }
+      .box:nth-child(3) {
+        grid-area: three;
+      }
+      .box:nth-child(4) {
+        grid-area: four;
+      }
+      .box:nth-child(5) {
+        grid-area: five;
+        height: 50vh;
+        img {
+          width: 100%;
+        }
+        background-image: url("/graph_1.jpeg");
+        background-repeat: no-repeat;
+        background-size: cover;
+      }
+      .box:nth-child(6) {
+        height: 50vh;
+        grid-area: six;
+        img {
+          width: 100%;
+        }
+        background-image: url("/graph_2.jpeg");
+        background-repeat: no-repeat;
+        background-size: cover;
+      }
+
+      grid-template-areas:
+        "one two three four"
+        "five five six six";
+    }
+  }
+}

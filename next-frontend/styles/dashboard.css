@@ -1,126 +1,139 @@
 .dashboard-body {
+  font-family: "Nunito";
   height: 100vh;
   width: 100vw;
-  background-color: blue;
-  position: relative;
-  top: 0;
-  z-index: 1;
+  background-color: #eff1fd;
 }
 
-.dashboard-body .top {
-  background-color: #b9b9f7;
-  top: 0;
-  position: relative;
-  height: 15vh;
+.dashboard-body .container {
+  padding: 2.5% 5% 0 25%;
 }
 
-.dashboard-body .top .search {
-  border: 1px solid black;
-  z-index: 1;
-  position: absolute;
-  width: 30vw;
-  top: 1em;
-  left: 50%;
-  -webkit-transform: translateX(-50%);
-          transform: translateX(-50%);
-  border: 1px solid black;
-  border-radius: 5px;
-  padding: 0.5em;
-}
-
-.dashboard-body .top .search .searchInputs {
+.dashboard-body .container .filters {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  -webkit-box-pack: left;
+      -ms-flex-pack: left;
+          justify-content: left;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
 }
 
-.dashboard-body .top .search .searchInputs input {
-  border: none;
-  background-color: transparent;
-  font-size: 1rem;
-  padding: 0 0.5em;
-  height: 30px;
-  width: 100%;
-  color: black;
+.dashboard-body .container .filters .filter {
+  background-color: white;
+  padding: 0.5em;
+  margin-right: 1em;
+  border-radius: 5px;
 }
 
-.dashboard-body .top .search .searchInputs input:focus {
-  outline: none;
+.dashboard-body .container .filters .filter div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: left;
+      -ms-flex-pack: left;
+          justify-content: left;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
-.dashboard-body .top .search .searchIcon {
-  width: 50px;
-  background-color: transparent;
+.dashboard-body .container .content {
+  margin-top: 1.5rem;
+  width: 70vw;
   display: -ms-grid;
   display: grid;
-  place-items: center;
-  -webkit-transform: translateX(-10%);
-          transform: translateX(-10%);
+  gap: 1.5rem;
+  grid-auto-columns: 1fr;
+      grid-template-areas: "one two three four" "five five six six";
 }
 
-.dashboard-body .top .search .dataResult {
-  display: none;
-  margin-top: 5px;
-  width: 100%;
-  height: 200px;
+.dashboard-body .container .content .box {
   background-color: white;
-  -webkit-box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-          box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-  overflow: hidden;
-  overflow-y: auto;
+  height: 20vh;
+  position: relative;
   border-radius: 5px;
-  border: 1px solid black;
-}
-
-.dashboard-body .top .search .dataResult .dataItem {
+  padding: 1em;
   width: 100%;
-  height: 50px;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  color: black;
 }
 
-.dashboard-body .top .search .dataResult .dataItem p {
-  margin-left: 10px;
-}
-
-.dashboard-body .top .search:hover .dataResult {
-  display: block;
-}
-
-.dashboard-body .chart {
-  width: 95%;
+.dashboard-body .container .content .box .title {
   position: absolute;
-  top: 55%;
-  left: 50%;
-  -webkit-transform: translate(-50%, -50%);
-          transform: translate(-50%, -50%);
+  top: 8px;
+  left: 8px;
 }
 
-.dataResult::-webkit-scrollbar {
-  display: none;
+.dashboard-body .container .content .box div {
+  font-weight: 500;
 }
 
-p {
-  text-decoration: none;
+.dashboard-body .container .content .box div p {
+  text-align: center;
 }
 
-p:hover {
-  background-color: lightgrey;
-  cursor: pointer;
+.dashboard-body .container .content .box div p:nth-child(1) {
+  font-size: 1.5rem;
+  font-weight: 500;
 }
 
-#clearBtn {
-  cursor: pointer;
+.dashboard-body .container .content .box div p:nth-child(2) {
+  font-size: 1.25rem;
+  font-weight: 400;
+}
+
+.dashboard-body .container .content .box:nth-child(1) {
+  -ms-grid-row: 1;
+  -ms-grid-column: 1;
+  grid-area: one;
+}
+
+.dashboard-body .container .content .box:nth-child(2) {
+  -ms-grid-row: 1;
+  -ms-grid-column: 2;
+  grid-area: two;
+}
+
+.dashboard-body .container .content .box:nth-child(3) {
+  -ms-grid-row: 1;
+  -ms-grid-column: 3;
+  grid-area: three;
+}
+
+.dashboard-body .container .content .box:nth-child(4) {
+  -ms-grid-row: 1;
+  -ms-grid-column: 4;
+  grid-area: four;
+}
+
+.dashboard-body .container .content .box:nth-child(5) {
+  -ms-grid-row: 2;
+  -ms-grid-column: 1;
+  -ms-grid-column-span: 2;
+  grid-area: five;
+  height: 50vh;
+  background-image: url("/graph_1.jpeg");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.dashboard-body .container .content .box:nth-child(5) img {
+  width: 100%;
+}
+
+.dashboard-body .container .content .box:nth-child(6) {
+  height: 50vh;
+  -ms-grid-row: 2;
+  -ms-grid-column: 3;
+  -ms-grid-column-span: 2;
+  grid-area: six;
+  background-image: url("/graph_2.jpeg");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.dashboard-body .container .content .box:nth-child(6) img {
+  width: 100%;
 }
 /*# sourceMappingURL=dashboard.css.map */
