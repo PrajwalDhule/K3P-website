@@ -11,6 +11,8 @@ import {
   Autocomplete,
 } from "@react-google-maps/api";
 import Geocode, { setApiKey } from "react-geocode";
+import {db} from "./firebase";
+import { getFirestore, addDoc, collection, arrayUnion, GeoPoint, query, where, getDoc, updateDoc, getDocs } from "firebase/firestore";
 
 const Safezone = () => {
   const [filteredData, setFilteredData] = useState([]);
@@ -19,13 +21,16 @@ const Safezone = () => {
   const [category, setCategory] = useState("");
   const placeholder = "Enter a Name";
   const [address, setAddress] = useState("");
+  const [city, setCity] = React.useState("");
+  const [zone, setZone] = React.useState("");
+  const [eventID, setEventID] = React.useState("#E123245");
   const data = Records;
   Geocode.setApiKey("AIzaSyClwDKfzGV_7ICoib-lk2rH0iw5IlKW5Lw");
   Geocode.enableDebug();
   // Map params
   const containerStyle = {
     height: "400px",
-    width: "1000px",
+    width: "900px",
     marginTop: "20px",
     marginLeft: "200px"
   };
@@ -38,10 +43,26 @@ const Safezone = () => {
     lat: 37.772,
     lng: -122.214,
   });
-  const [city, setCity] = React.useState("");
-  const [zone, setZone] = React.useState("");
 
+  const uploadSafeZone = async() =>{
+    console.log(eventID);
+    console.log(address);
+    console.log(city);
+    console.log(zone);
+    console.log(center.lat);
+    console.log(center.lng);
 
+    try {
+      const docRef = await addDoc(collection(db, "safezone"), {
+        eventID,
+        safeZone: {address,city,zone},
+        safeZoneLatLong:  new GeoPoint(center.lat,center.lng),
+      });
+      console.log("Document updated with ID: ", docRef.id);
+    } catch (e) {
+      console.error("Error adding document: ", e);
+    }
+  }
 
   const handleFilter = (event) => {
     const searchWord = event.target.value;
@@ -219,6 +240,7 @@ const Safezone = () => {
           </GoogleMap>
         </LoadScript>
         <div>{address}</div>
+        <div onClick={(e)=>{uploadSafeZone();}}>Submit</div>
       </div>
     </div>
   );
