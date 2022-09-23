@@ -1,8 +1,7 @@
 import React, { useState, useContext, useEffect } from "react";
 import Link from "next/link";
 import Navbar from "../components/navbar";
-import SearchIcon from "@material-ui/icons/Search";
-import CloseIcon from "@material-ui/icons/Close";
+
 // import BarChart from "./BarChart";
 // import Profile from "./Profile";
 import Records from "./data.json";
@@ -40,7 +39,7 @@ const Safezone = () => {
   console.log(filteredData, wordEntered, data);
 
   return (
-    <div className="dashboard-body">
+    <div className="safezone-body">
       <Navbar index="4" />
       <div className="top">
         <div className="search">
@@ -87,8 +86,10 @@ const Safezone = () => {
           required
         >
           <option value=""></option>
-          <option>Doubt</option>
-          <option>Informative</option>
+          <option>Mumbai</option>
+          <option>Pune</option>
+          <option>Jaipur</option>
+          <option>Bangalore</option>
         </select>
       </div>
     </div>

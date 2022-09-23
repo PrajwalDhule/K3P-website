@@ -24,9 +24,7 @@ $light-blue: #b0bdff;
   background-color: white;
   display: flex;
   justify-content: center;
-  Image {
-    height: 50px;
-  }
+  
   .nav-container {
     font-family: "Nunito";
     display: flex;
@@ -39,10 +37,17 @@ $light-blue: #b0bdff;
       margin-right: 1em;
     }
     .name {
-      @include flex(center);
+      @include flex(left);
+      padding: 0 1em;
       font-weight: 600;
+      img{
+        height: 2em;
+        margin-right: .5em;
+      }
       p {
         margin: 0;
+        font-weight: 700;
+        font-size: 1.25rem;
       }
       margin-bottom: 1.5em;
     }
@@ -50,6 +55,11 @@ $light-blue: #b0bdff;
       font-weight: 600;
       list-style: none;
       width: 100%;
+      img{
+        height: 1.25em;
+        width: 1.25em;
+        margin-right: .75em;
+      }
       li {
         cursor: pointer;
         @include flex(left);
