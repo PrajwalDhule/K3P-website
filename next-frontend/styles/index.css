@@ -7,207 +7,132 @@
   background-color: #EFF1FD;
   font-family: "Poppins";
 }
-
 .index-body .box {
   z-index: 2;
   position: absolute;
   border-radius: 25px;
 }
-
 .index-body .box-1 {
   height: 30vw;
   width: 30vw;
   background-color: #EDF0E8;
-  -webkit-transform: translate(-50%, 60%) rotateZ(45deg);
-          transform: translate(-50%, 60%) rotateZ(45deg);
+  transform: translate(-50%, 60%) rotateZ(45deg);
 }
-
 .index-body .box-2 {
   height: 30vw;
   width: 30vw;
   background-color: #E3E6FF;
   right: 0;
-  -webkit-transform: translate(50%, 25%) rotateZ(45deg);
-          transform: translate(50%, 25%) rotateZ(45deg);
+  transform: translate(50%, 25%) rotateZ(45deg);
 }
-
 .index-body .name {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  justify-content: center;
+  align-items: center;
   font-size: 1.25rem;
   font-weight: 500;
 }
-
 .index-body .name img {
-  margin-right: .5em;
+  margin-right: 0.5em;
   height: 5vh;
 }
-
 .index-body nav {
   padding: 5vh 10vh;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  justify-content: space-between;
+  align-items: center;
 }
-
 .index-body nav .menu-items {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  justify-content: center;
+  align-items: center;
   font-weight: 500;
 }
-
 .index-body nav .menu-items li {
   cursor: pointer;
   margin-left: 3em;
 }
-
 .index-body nav .menu-items li:hover {
-  color: #1515cb;
+  color: rgb(21, 21, 203);
 }
-
 .index-body nav .menu-items li:nth-child(1) {
   border: 1.5px solid black;
   border-radius: 5px;
-  padding: .5em 1em;
+  padding: 0.5em 1em;
 }
-
 .index-body nav .menu-items li:nth-child(1) div {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  justify-content: center;
+  align-items: center;
 }
-
 .index-body nav .menu-items li:nth-child(1) div img {
-  margin-left: .5em;
-  -webkit-transform: scale(0.8, 0.8);
-          transform: scale(0.8, 0.8);
+  margin-left: 0.5em;
+  transform: scale(0.8, 0.8);
 }
-
 .index-body nav .menu-items li:nth-child(1):hover div img {
-  -webkit-transform: translateX(5px) scale(0.8, 0.8);
-          transform: translateX(5px) scale(0.8, 0.8);
-  -webkit-transition: -webkit-transform 500ms;
-  transition: -webkit-transform 500ms;
+  transform: translateX(5px) scale(0.8, 0.8);
   transition: transform 500ms;
-  transition: transform 500ms, -webkit-transform 500ms;
 }
-
 .index-body .left {
   position: relative;
   z-index: 3;
   width: 50%;
   margin-left: 10vh;
 }
-
 .index-body .left .title {
   width: 85%;
   font-size: 3.5rem;
   font-weight: 600;
-  margin-top: .75em;
+  margin-top: 0.75em;
 }
-
 .index-body .left .desc {
   font-size: 1.25rem;
   margin: 1.5em 0;
   line-height: 1.2;
 }
-
 .index-body .left .buttons {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: left;
-      -ms-flex-pack: left;
-          justify-content: left;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  justify-content: left;
+  align-items: center;
   align-items: center;
 }
-
 .index-body .left .buttons img {
   height: 1em;
-  margin-left: .75em;
+  margin-left: 0.75em;
 }
-
 .index-body .left .buttons .left-btn button {
   background-color: #81FFFF;
 }
-
 .index-body .left .buttons .right-btn {
   margin-left: 3em;
 }
-
 .index-body .left .buttons .right-btn button {
   background-color: #B7FFBE;
 }
-
 .index-body .left .buttons .right-btn button img:hover {
-  -webkit-transform: scaleX(1.1);
-          transform: scaleX(1.1);
-  -webkit-transition: -webkit-transform 500ms;
-  transition: -webkit-transform 500ms;
+  transform: scaleX(1.1);
   transition: transform 500ms;
-  transition: transform 500ms, -webkit-transform 500ms;
 }
-
 .index-body .left .buttons button {
   cursor: pointer;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  justify-content: center;
+  align-items: center;
   margin-top: 1em;
   font-size: 1.25rem;
   font-weight: 500;
-  padding: .75em 1.5em;
+  padding: 0.75em 1.5em;
   border: none;
   border-radius: 5px;
-  -webkit-filter: drop-shadow(-3px 8px 8px rgba(0, 0, 0, 0.25));
-          filter: drop-shadow(-3px 8px 8px rgba(0, 0, 0, 0.25));
+  filter: drop-shadow(-3px 8px 8px rgba(0, 0, 0, 0.25));
 }
-
 .index-body .right {
   position: absolute;
   z-index: 3;
   right: 7.5vw;
   top: 50%;
-  -webkit-transform: translate(0, -50%);
-          transform: translate(0, -50%);
+  transform: translate(0, -50%);
 }
-
 .index-body .right img {
   height: 75vh;
-}
-/*# sourceMappingURL=index.css.map */
+}/*# sourceMappingURL=index.css.map */

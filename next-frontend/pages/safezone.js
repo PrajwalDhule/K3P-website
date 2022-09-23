@@ -18,11 +18,11 @@ import { getFirestore, addDoc, collection, arrayUnion, GeoPoint, query, where, g
 const Safezone = () => {
   const [filteredData, setFilteredData] = useState([]);
   const [wordEntered, setWordEntered] = useState("");
-  const [person, setPerson] = useState("");
   const [category, setCategory] = useState("");
   const placeholder = "Enter a Name";
   const [address, setAddress] = useState("");
   const [city, setCity] = React.useState("");
+  const [contact, setContact] = React.useState("");
   const [zone, setZone] = React.useState("");
   const [eventID, setEventID] = React.useState("#E123245");
   const data = Records;
@@ -55,9 +55,13 @@ const Safezone = () => {
 
     try {
       const docRef = await addDoc(collection(db, "safezone"), {
-        eventID,
-        safeZone: {address,city,zone},
-        safeZoneLatLong:  new GeoPoint(center.lat,center.lng),
+        disasterID:eventID,
+        locationAddress: address,
+        contactNo:contact,
+        locationZone:zone,
+        locationLat: center.lat,
+        locationLong:center.lng,
+        locationCity:city,
       });
       console.log("Document updated with ID: ", docRef.id);
     } catch (e) {
@@ -242,6 +246,27 @@ const Safezone = () => {
             <MarkerF />
           </GoogleMap>
         </LoadScript>
+        <div className="searchInputs">
+            <input
+              type="text"
+              placeholder={"Enter contact number"}
+              value={contact}
+              onChange={(e) => {
+                setContact(e.target.value);
+              }}
+            />
+            {/* <div className="searchIcon">
+                {filteredData.length === 0 ? (
+                  // <SearchIcon />
+                  <p>search</p>
+                ) : (
+                  // <CloseIcon id="clearBtn" onClick={clearInput} />
+                  <p id="clearBtn" onClick={clearInput}>
+                    clear
+                  </p>
+                )}
+              </div> */}
+          </div>
         <div>{address}</div>
         <div onClick={(e)=>{uploadSafeZone();}}>Submit</div>
       </div>

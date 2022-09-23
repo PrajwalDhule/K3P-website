@@ -4,6 +4,7 @@
 $blue: #2e5fdc;
 $light-blue: #dcebf5;
 $light-blue-2: #4772df;
+$background-login: #B0BDFF;
 
 @mixin flex($jc) {
   display: flex;
@@ -41,25 +42,26 @@ button {
   height: 100vh;
   width: 100vw;
   @include flex(center);
-  background-color: $light-blue;
+  background-color: $background-login;
   z-index: -2;
 }
 
 .box {
   height: 90%;
-  width: 65%;
+  width: 90%;
   position: relative;
   //   border: 2px solid red;
   @include flex(center);
   .left {
-    width: 50%;
+    width: 70%;
     height: 100%;
-    background-color: $blue;
+    background-color: $background-login;
     border-radius: 5px 0 0 5px;
     @include flex(center);
     flex-direction: column;
     position: relative;
     z-index: -2;
+    margin-right: -40px;
     overflow: hidden;
     .girl {
       width: 80%;
@@ -105,7 +107,7 @@ button {
     width: 50%;
     height: 100%;
     background-color: white;
-    border-radius: 0 5px 5px 0;
+    border-radius: 30px 0px 0px 30px;
     position: relative;
     @include flex(center);
     .top-buttons {

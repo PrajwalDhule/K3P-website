@@ -5,6 +5,18 @@
     width: 100vw;
 }
 
+/* Vector 5 */
+.underline{
+    position: absolute;
+    width: 60px;
+    height: 38.5px;
+    left: 452.5px;
+    top: 849.5px;
+    
+    border: 3px solid #1F7878;
+    border-radius: 13px;
+}
+
 .landing-page-navbar{
     display: flex;
     padding: 48px 24px;
