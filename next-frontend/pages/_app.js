@@ -8,6 +8,7 @@ import "../styles/landingPage.css";
 import "../styles/index.css";
 import "../styles/alert.css";
 import "../styles/profile.css";
+import "../styles/disaster.css";
 // Put any other imports below so that CSS from your
 // components takes precedence over default styles.
 // import "../styles/landing.css";

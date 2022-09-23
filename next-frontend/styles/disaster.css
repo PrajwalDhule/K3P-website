@@ -1,0 +1,79 @@
+.disaster-body {
+  font-family: "Nunito";
+  height: 100vh;
+  width: 100vw;
+  background-color: #eff1fd;
+  padding: 1em 2em 1em calc(20% + 2em);
+}
+
+.disaster-body .top {
+  font-size: 1.15rem;
+  font-weight: 500;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: left;
+      -ms-flex-pack: left;
+          justify-content: left;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  margin-bottom: 2em;
+}
+
+.disaster-body .top p:nth-child(1) {
+  margin-right: 2em;
+}
+
+.disaster-body .buttons {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.disaster-body .buttons button {
+  font-weight: 600;
+  margin-top: 1em;
+  padding: 0.75em 1.25em;
+  border: none;
+  border: 3px solid transparent;
+  border-radius: 5px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.disaster-body .buttons button:hover {
+  border: 3px solid black;
+  color: #251355;
+}
+
+.disaster-body .buttons button img {
+  height: 1em;
+  margin-right: 0.75em;
+}
+
+.disaster-body .buttons button + button {
+  margin-left: 2em;
+}
+
+.disaster-body .buttons button:nth-child(1) {
+  background-color: transparent;
+}
+
+.disaster-body .buttons button:nth-child(1) img {
+  -webkit-transform: rotateZ(180deg);
+          transform: rotateZ(180deg);
+}
+
+.disaster-body .buttons button:nth-child(2) {
+  background-color: #ffc2c2;
+}
+
+.disaster-body .buttons button:nth-child(3) {
+  background-color: #dbdbff;
+}
+/*# sourceMappingURL=disaster.css.map */
