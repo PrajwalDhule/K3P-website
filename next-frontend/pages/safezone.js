@@ -1,4 +1,4 @@
-import React, { useState, useContext, useEffect } from "react";
+import React, { useState } from "react";
 import Link from "next/link";
 import Navbar from "../components/navbar";
 
@@ -101,7 +101,7 @@ const Safezone = () => {
 
   return (
     <div className="safezone-body">
-      <Navbar index="4" />
+      <Navbar index="3" />
       <div className="top">
         <div className="search">
           <div className="searchInputs">

@@ -24,12 +24,12 @@ const Index = () => {
             </Link>
           </li>
           <li>
-            <Link href="/">
+            <Link href="/signup">
               <div>Sign Up</div>
             </Link>
           </li>
           <li>
-            <Link href="/">
+            <Link href="/login">
               <div>Login</div>
             </Link>
           </li>

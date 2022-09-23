@@ -35,7 +35,7 @@ button {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  background-color: #cbd4ff;
+  background-color: #eff1fd;
   z-index: -2;
 }
 
@@ -57,7 +57,7 @@ button {
 .box .left {
   width: 70%;
   height: 100%;
-  background-color: #cbd4ff;
+  background-color: #eff1fd;
   border-radius: 5px 0 0 5px;
   display: -webkit-box;
   display: -ms-flexbox;

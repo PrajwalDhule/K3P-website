@@ -10,8 +10,6 @@ const Navbar = (props) => {
       <div className="nav-container">
         <Link href="/">
           <div className="name">
-            {/* <Image className="img" src={logo} height="50px" width="50px" /> */}
-            {/* <img src={logo} /> */}
             <img src="/logo.png"></img>
             <p>Helpalert</p>
           </div>
@@ -39,26 +37,27 @@ const Navbar = (props) => {
               <p>Alerts</p>
             </li>
           </Link>
+
           <Link
-            href="/dashboard"
+            href="/safezone"
             onClick={() => {
               setShow("show-3");
             }}
           >
             <li className={`hide ${show}-3`}>
-              <img src="/home.svg"></img>
-              <p>Approve</p>
+              <img src="/tick.svg"></img>
+              <p>Safe zones</p>
             </li>
           </Link>
           <Link
-            href="/safezone"
+            href="/profile"
             onClick={() => {
               setShow("show-4");
             }}
           >
             <li className={`hide ${show}-4`}>
-              <img src="/tick.svg"></img>
-              <p>Safe zones</p>
+              <img src="/profile.svg"></img>
+              <p>Profile</p>
             </li>
           </Link>
         </div>
