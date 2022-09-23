@@ -139,6 +139,7 @@ input {
       -ms-flex-pack: justify;
           justify-content: space-between;
   padding: 1.5em;
+  min-height: 30vh;
 }
 
 .footer .address {

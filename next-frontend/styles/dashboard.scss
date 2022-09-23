@@ -25,11 +25,25 @@ $bg-light-blue: #eff1fd;
 
       .filter {
         background-color: white;
-        padding: 0.5em;
+        padding: 0.75em 1em;
         margin-right: 1em;
         border-radius: 5px;
         div {
-          @include flex(left);
+          margin-top: 0.5em;
+          @include flex(space-between);
+          img {
+            height: 0.9em;
+          }
+        }
+      }
+      .filter:nth-child(1) {
+        img {
+          margin-right: 1em;
+        }
+      }
+      .filter + .filter {
+        img {
+          transform: rotateZ(90deg);
         }
       }
     }
@@ -52,6 +66,14 @@ $bg-light-blue: #eff1fd;
           left: 8px;
         }
         div {
+          div {
+            margin-top: 0.5em;
+            @include flex(center);
+            img {
+              margin-right: 0.5em;
+              height: 1em;
+            }
+          }
           p {
             text-align: center;
           }
@@ -62,7 +84,7 @@ $bg-light-blue: #eff1fd;
           }
           p:nth-child(2) {
             font-size: 1.25rem;
-            font-weight: 400;
+            font-weight: 600;
           }
         }
       }
@@ -105,4 +127,11 @@ $bg-light-blue: #eff1fd;
         "five five six six";
     }
   }
+}
+
+.red {
+  color: #c41313;
+}
+.green {
+  color: #1fc71f;
 }
