@@ -1,15 +1,29 @@
 import React, { useState, useContext, useEffect } from "react";
 import Link from "next/link";
-
+import {db} from "./firebase";
+import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
+// import { getStorage } from "firebase/";
 const Login = (props) => {
   const [userName, setUserName] = useState("");
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
-  const [image, setImage] = useState("");
   const [url, setUrl] = useState(undefined);
 
   const loginMsg = () => {
-    alert("logged in!");
+    const auth = getAuth();
+    signInWithEmailAndPassword(auth, email, password)
+    .then((userCredential) => {
+      // Signed in 
+      const user = userCredential.user;
+      alert("logged in!");
+      console.log("Logged in as "+ email + " and user credential ")
+        // ...
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        // ..
+      });
   };
 
   return (
@@ -249,15 +263,15 @@ const Login = (props) => {
               <button>Sign up</button>
             </Link>
           </div>
-          <form onSubmit={() => loginMsg()} className="right-container">
+          <form onSubmit={(e) => {e.preventDefault();loginMsg()}} className="right-container">
             <h2>Login to your account</h2>
             <div className="field">
               <p>Username</p>
               <input
                 type="text"
-                placeholder="Enter username"
-                value={userName}
-                onChange={(e) => setUserName(e.target.value)}
+                placeholder="Enter email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
               />
             </div>
             <div className="field">
