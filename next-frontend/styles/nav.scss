@@ -1,5 +1,5 @@
 $bg-light-blue: #eff1fd;
-$light-blue: #b0bdff;
+$light-blue: #d2dbfe;
 
 @mixin flex($jc) {
   display: flex;
@@ -20,7 +20,7 @@ $light-blue: #b0bdff;
   z-index: 3;
   width: 20%;
   height: 100vh;
-  background-color: white;
+  background-color: #fdfdff;
   display: flex;
   justify-content: center;
 

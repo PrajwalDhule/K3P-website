@@ -1,4 +1,5 @@
 .safezone-body {
+  font-family: "Nunito";
   height: 100vh;
   width: 100vw;
   background-color: #eff1fd;
@@ -10,7 +11,7 @@
 .safezone-body .top {
   top: 0;
   position: relative;
-  height: 15vh;
+  height: 10vh;
 }
 
 .safezone-body .top select {
@@ -75,8 +76,7 @@
   background-color: white;
   -webkit-box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
           box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-  overflow: hidden;
-  overflow-y: auto;
+  overflow-x: hidden;
   border-radius: 5px;
   border: 1px solid black;
 }
@@ -124,5 +124,69 @@ p:hover {
 
 #clearBtn {
   cursor: pointer;
+}
+
+input {
+  font-family: "Nunito";
+}
+
+.footer {
+  background-color: white;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  padding: 1.5em;
+}
+
+.footer .address {
+  max-width: 65%;
+}
+
+.footer .address p:nth-child(1) {
+  font-weight: 600;
+}
+
+.footer .address p:nth-child(2) {
+  margin-top: 1em;
+  border-radius: 5px;
+  border: 1px solid black;
+  padding: 0.5em 0.75em;
+}
+
+.footer .right {
+  height: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.footer .right input {
+  border: 2px solid black;
+  padding: 0.25em 0.5em;
+  font-size: 1.2rem;
+  border-radius: 5px;
+}
+
+.footer .right button {
+  margin-top: 1em;
+  padding: 0.5em 1em;
+  background-color: #eff1fd;
+  border: none;
+  border-radius: 5px;
+  -webkit-filter: drop-shadow(-2px 2px 5px rgba(0, 0, 0, 0.5));
+          filter: drop-shadow(-2px 2px 5px rgba(0, 0, 0, 0.5));
 }
 /*# sourceMappingURL=safezone.css.map */

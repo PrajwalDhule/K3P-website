@@ -3,7 +3,7 @@
   z-index: 3;
   width: 20%;
   height: 100vh;
-  background-color: white;
+  background-color: #fdfdff;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -94,6 +94,6 @@
 .nav-body .nav-container .nav-items .show-2-2,
 .nav-body .nav-container .nav-items .show-3-3,
 .nav-body .nav-container .nav-items .show-4-4 {
-  background-color: #b0bdff;
+  background-color: #d2dbfe;
 }
 /*# sourceMappingURL=nav.css.map */

@@ -1,23 +1,30 @@
 import React, { useState, useContext, useEffect } from "react";
 import Link from "next/link";
-import {db} from "./firebase";
-import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
+import { useRouter } from "next/router";
+import { db } from "./firebase";
+import {
+  getAuth,
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+} from "firebase/auth";
 // import { getStorage } from "firebase/";
 const Login = (props) => {
   const [userName, setUserName] = useState("");
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
   const [url, setUrl] = useState(undefined);
-
+  const router = useRouter();
   const loginMsg = () => {
     const auth = getAuth();
     signInWithEmailAndPassword(auth, email, password)
-    .then((userCredential) => {
-      // Signed in 
-      const user = userCredential.user;
-      alert("logged in!");
-      console.log("Logged in as "+ email + " and user credential ")
+      .then((userCredential) => {
+        // Signed in
+        const user = userCredential.user;
+        alert("logged in!");
+        console.log("Logged in as " + email + " and user credential ");
         // ...
+        // navigate("/dashboard");
+        router.push("/dashboard");
       })
       .catch((error) => {
         const errorCode = error.code;
@@ -263,7 +270,13 @@ const Login = (props) => {
               <button>Sign up</button>
             </Link>
           </div>
-          <form onSubmit={(e) => {e.preventDefault();loginMsg()}} className="right-container">
+          <form
+            onSubmit={(e) => {
+              e.preventDefault();
+              loginMsg();
+            }}
+            className="right-container"
+          >
             <h2>Login to your account</h2>
             <div className="field">
               <p>Username</p>
