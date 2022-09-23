@@ -31,7 +31,7 @@ const Safezone = () => {
   const [wordEntered, setWordEntered] = useState("");
   const [category, setCategory] = useState("");
   const placeholder = "Enter a Name";
-  const [address, setAddress] = useState("");
+  const [address, setAddress] = useState("Address not selected");
   const [city, setCity] = React.useState("");
   const [contact, setContact] = React.useState("");
   const [zone, setZone] = React.useState("");
@@ -41,10 +41,11 @@ const Safezone = () => {
   Geocode.enableDebug();
   // Map params
   const containerStyle = {
-    height: "400px",
-    width: "900px",
+    height: "60vh",
+    width: "calc(100%-48px)",
     marginTop: "20px",
-    marginLeft: "200px",
+    margin: "24px",
+    // marginLeft: "200px",
   };
 
   const [center, setCenter] = React.useState({
@@ -141,7 +142,7 @@ const Safezone = () => {
         </div>
       </div>
 
-      <div className="safe-zone-main-container" style={{ marginLeft: "20%" }}>
+      <div className="safe-zone-main-container" style={{ marginLeft: "20vw" }}>
         <LoadScript
           googleMapsApiKey="AIzaSyClwDKfzGV_7ICoib-lk2rH0iw5IlKW5Lw"
           libraries={["places"]}
@@ -250,8 +251,8 @@ const Safezone = () => {
                 style={{
                   boxSizing: `border-box`,
                   border: `1px solid var(--primary-color-dark)`,
-                  width: `256px`,
-                  height: `64px`,
+                  width: `320px`,
+                  height: `48px`,
                   padding: `1rem 2rem`,
                   borderRadius: `0.9rem`,
                   boxShadow: `0 2px 6px rgba(0, 0, 0, 0.3)`,
@@ -273,15 +274,7 @@ const Safezone = () => {
             <MarkerF />
           </GoogleMap>
         </LoadScript>
-        <div className="searchInputs">
-          <input
-            type="text"
-            placeholder={"Enter contact number"}
-            value={contact}
-            onChange={(e) => {
-              setContact(e.target.value);
-            }}
-          />
+        <div className="footer">
           {/* <div className="searchIcon">
                 {filteredData.length === 0 ? (
                   // <SearchIcon />
@@ -293,14 +286,28 @@ const Safezone = () => {
                   </p>
                 )}
               </div> */}
-        </div>
-        <div>{address}</div>
-        <div
-          onClick={(e) => {
-            uploadSafeZone();
-          }}
-        >
-          Submit
+          <div className="address">
+            <p>Address:</p>
+            <p>{address}</p>
+          </div>
+          <div className="right">
+            <input
+              type="text"
+              placeholder={"Enter contact number"}
+              value={contact}
+              onChange={(e) => {
+                setContact(e.target.value);
+              }}
+              id="contact"
+            />
+            <button
+              onClick={(e) => {
+                uploadSafeZone();
+              }}
+            >
+              Submit
+            </button>
+          </div>
         </div>
       </div>
     </div>

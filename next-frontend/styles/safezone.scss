@@ -14,6 +14,8 @@ $bg-light-blue: #eff1fd;
 }
 
 .safezone-body {
+  // font-family: "Poppins";
+  font-family: "Nunito";
   height: 100vh;
   width: 100vw;
   background-color: $bg-light-blue;
@@ -23,7 +25,7 @@ $bg-light-blue: #eff1fd;
   .top {
     top: 0;
     position: relative;
-    height: 15vh;
+    height: 10vh;
     select {
       margin-left: 50vw;
     }
@@ -72,8 +74,7 @@ $bg-light-blue: #eff1fd;
         height: 200px;
         background-color: white;
         box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-        overflow: hidden;
-        overflow-y: auto;
+        overflow-x: hidden;
         border-radius: 5px;
         border: 1px solid rgb(0, 0, 0);
         .dataItem {
@@ -115,4 +116,47 @@ p {
 
 #clearBtn {
   cursor: pointer;
+}
+
+input {
+  font-family: "Nunito";
+}
+
+.footer {
+  background-color: white;
+  display: flex;
+  justify-content: space-between;
+  padding: 1.5em;
+  .address {
+    max-width: 65%;
+    p:nth-child(1) {
+      font-weight: 600;
+    }
+    p:nth-child(2) {
+      margin-top: 1em;
+      border-radius: 5px;
+      border: 1px solid black;
+      padding: 0.5em 0.75em;
+    }
+  }
+  .right {
+    height: 100%;
+    @include flex(center);
+    flex-direction: column;
+    input {
+      border: 2px solid black;
+      padding: 0.25em 0.5em;
+      font-size: 1.2rem;
+      border-radius: 5px;
+    }
+    button {
+      margin-top: 1em;
+      padding: 0.5em 1em;
+      background-color: $bg-light-blue;
+      // border: 1px solid black;
+      border: none;
+      border-radius: 5px;
+      filter: drop-shadow(-2px 2px 5px rgba(0, 0, 0, 0.5));
+    }
+  }
 }
