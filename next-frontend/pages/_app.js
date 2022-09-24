@@ -10,6 +10,7 @@ import "../styles/alert.css";
 import "../styles/profile.css";
 import "../styles/disaster.css";
 import "../styles/profile.css";
+import "../styles/donation.css";
 // Put any other imports below so that CSS from your
 // components takes precedence over default styles.
 // import "../styles/landing.css";

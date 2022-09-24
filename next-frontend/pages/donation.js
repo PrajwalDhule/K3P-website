@@ -23,7 +23,7 @@ const Safezone = (disasterListfromServer) => {
   const [filteredData, setFilteredData] = useState([]);
   const [wordEntered, setWordEntered] = useState("");
   const [organization, setOrgName] = useState("");
-  const placeholder = "Enter the disaster description";
+  const placeholder = "Enter disaster description";
   const [address, setAddress] = useState("Address not selected");
   const [payment, setPayment] = React.useState("");
   const [contact, setContact] = React.useState("");
@@ -35,14 +35,13 @@ const Safezone = (disasterListfromServer) => {
   // disasterListfromServer.disasterListfromServer.data.map((i)=>{
   //   console.log(i);
 
-
   const uploadDonation = async () => {
     try {
       const docRef = await addDoc(collection(db, "safezone"), {
         disasterID: eventID,
-        organization:organization,
-        donationLink:payment,
-        contact:contact
+        organization: organization,
+        donationLink: payment,
+        contact: contact,
       });
       console.log("Document updated with ID: ", docRef.id);
     } catch (e) {
@@ -54,9 +53,13 @@ const Safezone = (disasterListfromServer) => {
     console.log(disasterListfromServer.disasterListfromServer);
     const searchWord = event.target.value;
     setWordEntered(searchWord);
-    const newFilter = disasterListfromServer.disasterListfromServer.data.filter((value) => {
-      return value.disasterDesc.description.toLowerCase().includes(searchWord.toLowerCase());
-    });
+    const newFilter = disasterListfromServer.disasterListfromServer.data.filter(
+      (value) => {
+        return value.disasterDesc.description
+          .toLowerCase()
+          .includes(searchWord.toLowerCase());
+      }
+    );
     console.log(newFilter);
     if (searchWord === "") {
       setFilteredData([]);
@@ -71,7 +74,7 @@ const Safezone = (disasterListfromServer) => {
   };
 
   return (
-    <div className="safezone-body">
+    <div className="donation-body">
       <Navbar index="5" />
       <div className="top">
         <div className="search">
@@ -104,7 +107,11 @@ const Safezone = (disasterListfromServer) => {
                   <div
                     className="dataItem"
                     target="_blank"
-                    onClick={(e)=>{setEventID(value.disasterID); setFilteredData([]); setWordEntered(value.disasterDesc.description)}}
+                    onClick={(e) => {
+                      setEventID(value.disasterID);
+                      setFilteredData([]);
+                      setWordEntered(value.disasterDesc.description);
+                    }}
                   >
                     <p>{value.disasterDesc.description} </p>
                   </div>
@@ -116,7 +123,6 @@ const Safezone = (disasterListfromServer) => {
       </div>
 
       <div className="safe-zone-main-container" style={{ marginLeft: "20vw" }}>
-            
         <div className="footer">
           <div className="right">
             <input
@@ -129,8 +135,7 @@ const Safezone = (disasterListfromServer) => {
               id="contact"
             />
           </div>
-        
-        
+
           <div className="right">
             <input
               type="text"
@@ -142,7 +147,7 @@ const Safezone = (disasterListfromServer) => {
               id="contact"
             />
           </div>
-        
+
           <div className="right">
             <input
               type="text"
@@ -169,27 +174,26 @@ const Safezone = (disasterListfromServer) => {
 
 export default Safezone;
 
-
 export async function getServerSideProps(context) {
   const q = query(collection(db, "disaster"));
-  
+
   const querySnapshot = await getDocs(q);
-  console.log(querySnapshot.docs.length)
+  console.log(querySnapshot.docs.length);
   var tmpDisaster = [];
-  console.log(typeof(tmpDisaster)+" askjxnjkas");
+  console.log(typeof tmpDisaster + " askjxnjkas");
   querySnapshot.docs.forEach((doc) => {
     var data = {
-      disasterID:doc.id,
-      disasterDesc:doc.data("description"),
-    }
+      disasterID: doc.id,
+      disasterDesc: doc.data("description"),
+    };
     tmpDisaster.push(data);
   });
 
   console.log(tmpDisaster);
-  console.log(typeof(tmpDisaster));
+  console.log(typeof tmpDisaster);
   return {
     props: {
-      disasterListfromServer: {data:tmpDisaster},
+      disasterListfromServer: { data: tmpDisaster },
     },
   };
 }
