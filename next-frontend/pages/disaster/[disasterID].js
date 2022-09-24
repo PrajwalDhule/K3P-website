@@ -4,12 +4,14 @@ import { db } from "./../firebase";
 import Link from "next/link";
 import {
   getFirestore,
-  addDoc,
+  deleteDoc,
   collection,
   query,
+  getDocs,
   getDoc,
   where,
   doc,
+  updateDoc,
 } from "firebase/firestore";
 import {
   GoogleMap,
@@ -19,6 +21,8 @@ import {
 } from "@react-google-maps/api";
 
 export default function DisasterDetails({ ID, data }) {
+  console.log(ID);
+  console.log(data);
   // Map params
   console.log(data);
   const containerStyle = {
@@ -39,6 +43,32 @@ export default function DisasterDetails({ ID, data }) {
     lng: -122.214,
   });
 
+  let spamReq = async () =>{
+    const q = query(collection(db, "users"),where("phoneNo","==","+919969534217"));
+    const querySnapshot = await getDocs(q);
+    var creditScore = querySnapshot.docs[0].get("creditScore")-2;
+    const docref = doc(db,"users",querySnapshot.docs[0].id);
+    updateDoc(docref,{creditScore:creditScore});
+    // const docref = doc(db,"users",querySnapshot.docs[0].id);
+    // deleteDoc(docref);
+    const docref2 = doc(db,"disaster",ID);
+    deleteDoc(docref2);
+  }
+
+  let ApproveReq = async () =>{
+    const q = query(collection(db, "users"),where("phoneNo","==","+919969534217"));
+    const querySnapshot = await getDocs(q);
+    var creditScore = querySnapshot.docs[0].get("creditScore")+10;
+    const docref = doc(db,"users",querySnapshot.docs[0].id);
+    updateDoc(docref,{creditScore:creditScore,approve:true});
+  }
+  let ProcessReq = async () =>{
+    // const q = query(collection(db, "users"),where("phoneNo","==","+919969534217"));
+    // const querySnapshot = await getDocs(q);
+    // var creditScore = querySnapshot.docs[0].get("creditScore")+10;
+    const docref2 = doc(db,"disaster",ID);
+    deleteDoc(docref2);
+  }
   console.log(data);
   return (
     <>
@@ -77,13 +107,17 @@ export default function DisasterDetails({ ID, data }) {
               <img src="/more.svg" /> Go back
             </button>
           </Link>
-          <button>
+          <button onClick={()=>{spamReq()}}>
             <img src="/spam.svg" />
             Spam
           </button>
-          <button>
+          <button onClick={()=>{ApproveReq()}}>
             <img src="/tick.svg" />
             Approve
+          </button>
+          <button onClick={()=>{ProcessReq()}}>
+            <img src="/tick.svg" />
+            Disaster Reported
           </button>
         </div>
       </div>
