@@ -4,66 +4,43 @@
   width: 100vw;
   background-color: #eff1fd;
 }
-
 .dashboard-body .container {
   padding: 2.5% 5% 0 25%;
 }
-
 .dashboard-body .container .filters {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: left;
-      -ms-flex-pack: left;
-          justify-content: left;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  justify-content: left;
+  align-items: center;
 }
-
 .dashboard-body .container .filters .filter {
   background-color: white;
   padding: 0.75em 1em;
   margin-right: 1em;
   border-radius: 5px;
 }
-
 .dashboard-body .container .filters .filter div {
   margin-top: 0.5em;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  justify-content: space-between;
+  align-items: center;
 }
-
 .dashboard-body .container .filters .filter div img {
   height: 0.9em;
 }
-
 .dashboard-body .container .filters .filter:nth-child(1) img {
   margin-right: 1em;
 }
-
 .dashboard-body .container .filters .filter + .filter img {
-  -webkit-transform: rotateZ(90deg);
-          transform: rotateZ(90deg);
+  transform: rotateZ(90deg);
 }
-
 .dashboard-body .container .content {
   margin-top: 1.5rem;
   width: 70vw;
-  display: -ms-grid;
   display: grid;
   gap: 1.5rem;
   grid-auto-columns: 1fr;
-      grid-template-areas: "one two three four" "five five six six";
+  grid-template-areas: "one two three four" "five five six six";
 }
-
 .dashboard-body .container .content .box {
   background-color: white;
   height: 20vh;
@@ -72,99 +49,64 @@
   padding: 1em;
   width: 100%;
 }
-
 .dashboard-body .container .content .box .title {
   position: absolute;
   top: 8px;
   left: 8px;
 }
-
 .dashboard-body .container .content .box div {
   font-weight: 500;
 }
-
 .dashboard-body .container .content .box div div {
   margin-top: 0.5em;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  justify-content: center;
+  align-items: center;
 }
-
 .dashboard-body .container .content .box div div img {
   margin-right: 0.5em;
   height: 1em;
 }
-
 .dashboard-body .container .content .box div p {
   text-align: center;
 }
-
 .dashboard-body .container .content .box div p:nth-child(1) {
   font-size: 1.5rem;
   font-weight: 500;
 }
-
 .dashboard-body .container .content .box div p:nth-child(2) {
   font-size: 1.25rem;
   font-weight: 600;
 }
-
 .dashboard-body .container .content .box:nth-child(1) {
-  -ms-grid-row: 1;
-  -ms-grid-column: 1;
   grid-area: one;
 }
-
 .dashboard-body .container .content .box:nth-child(2) {
-  -ms-grid-row: 1;
-  -ms-grid-column: 2;
   grid-area: two;
 }
-
 .dashboard-body .container .content .box:nth-child(3) {
-  -ms-grid-row: 1;
-  -ms-grid-column: 3;
   grid-area: three;
 }
-
 .dashboard-body .container .content .box:nth-child(4) {
-  -ms-grid-row: 1;
-  -ms-grid-column: 4;
   grid-area: four;
 }
-
 .dashboard-body .container .content .box:nth-child(5) {
-  -ms-grid-row: 2;
-  -ms-grid-column: 1;
-  -ms-grid-column-span: 2;
   grid-area: five;
   height: 50vh;
   background-image: url("/graph_1.jpeg");
   background-repeat: no-repeat;
   background-size: cover;
 }
-
 .dashboard-body .container .content .box:nth-child(5) img {
   width: 100%;
 }
-
 .dashboard-body .container .content .box:nth-child(6) {
   height: 50vh;
-  -ms-grid-row: 2;
-  -ms-grid-column: 3;
-  -ms-grid-column-span: 2;
   grid-area: six;
   background-image: url("/graph_2.jpeg");
   background-repeat: no-repeat;
   background-size: cover;
 }
-
 .dashboard-body .container .content .box:nth-child(6) img {
   width: 100%;
 }
@@ -175,5 +117,4 @@
 
 .green {
   color: #1fc71f;
-}
-/*# sourceMappingURL=dashboard.css.map */
+}/*# sourceMappingURL=dashboard.css.map */

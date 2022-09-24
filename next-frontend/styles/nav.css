@@ -4,96 +4,62 @@
   width: 20%;
   height: 100vh;
   background-color: #fdfdff;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  justify-content: center;
 }
-
 .nav-body .nav-container {
   font-family: "Nunito";
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
+  flex-direction: column;
   margin: 1em 0;
   width: 80%;
 }
-
 .nav-body .nav-container span {
   margin-right: 1em;
 }
-
 .nav-body .nav-container .name {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: left;
-      -ms-flex-pack: left;
-          justify-content: left;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  justify-content: left;
+  align-items: center;
   padding: 0 1em;
   font-weight: 600;
   margin-bottom: 1.5em;
 }
-
 .nav-body .nav-container .name img {
   height: 2em;
   margin-right: 0.5em;
 }
-
 .nav-body .nav-container .name p {
   margin: 0;
   font-weight: 700;
   font-size: 1.25rem;
 }
-
 .nav-body .nav-container .nav-items {
   font-weight: 600;
   list-style: none;
   width: 100%;
 }
-
 .nav-body .nav-container .nav-items img {
   height: 1.25em;
   width: 1.25em;
   margin-right: 0.75em;
 }
-
 .nav-body .nav-container .nav-items li {
   cursor: pointer;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: left;
-      -ms-flex-pack: left;
-          justify-content: left;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  justify-content: left;
+  align-items: center;
   margin-bottom: 0.75em;
   border-radius: 8px;
   padding: 0.75em 1em;
 }
-
 .nav-body .nav-container .nav-items li p {
-  -ms-flex-item-align: center;
-      -ms-grid-row-align: center;
-      align-self: center;
+  align-self: center;
   margin: 0;
 }
-
 .nav-body .nav-container .nav-items .show-1-1,
 .nav-body .nav-container .nav-items .show-2-2,
 .nav-body .nav-container .nav-items .show-3-3,
 .nav-body .nav-container .nav-items .show-4-4 {
   background-color: #d2dbfe;
-}
-/*# sourceMappingURL=nav.css.map */
+}/*# sourceMappingURL=nav.css.map */
