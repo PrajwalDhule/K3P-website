@@ -40,15 +40,6 @@
   background-color: #ababf8;
 }
 
-.donation-body .search {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-}
-
 .donation-body .search .search-inputs {
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
