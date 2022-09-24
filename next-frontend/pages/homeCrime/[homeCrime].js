@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import { db } from "./../firebase";
+import Navbar from "../../components/navbar.js";
+import Link from 'next/link'
 import {
   getFirestore,
   addDoc,
@@ -9,6 +11,12 @@ import {
   where,
   doc,
 } from "firebase/firestore";
+import {
+  GoogleMap,
+  LoadScript,
+  MarkerF,
+  Autocomplete,
+} from "@react-google-maps/api";
 
 export default function HomeCrimeDetails({ ID, data }) {
   // Map params
@@ -30,10 +38,34 @@ export default function HomeCrimeDetails({ ID, data }) {
     lat: 37.772,
     lng: -122.214,
   });
+  
+  let spamReq = async () =>{
+    const q = query(collection(db, "users"),where("phoneNo","==","+919969534217"));
+    const querySnapshot = await getDocs(q);
+    var creditScore = querySnapshot.docs[0].get("creditScore")-2;
+    const docref = doc(db,"users",querySnapshot.docs[0].id);
+    updateDoc(docref,{creditScore:creditScore});
+    // const docref = doc(db,"users",querySnapshot.docs[0].id);
+    // deleteDoc(docref);
+    const docref2 = doc(db,"homecrime",ID);
+    deleteDoc(docref2);
+  }
 
+  let ApproveReq = async () =>{
+    const q = query(collection(db, "users"),where("phoneNo","==","+919969534217"));
+    const querySnapshot = await getDocs(q);
+    var creditScore = querySnapshot.docs[0].get("creditScore")+10;
+    const docref = doc(db,"users",querySnapshot.docs[0].id);
+    updateDoc(docref,{creditScore:creditScore,approve:true});
+  }
+  let ProcessReq = async () =>{
+    const docref2 = doc(db,"homecrime",ID);
+    deleteDoc(docref2);
+  }
   console.log(data);
   return (
     <div className="disaster-main-container disaster-body">
+       {/* <Navbar index="2" /> */}
       <div className="top">
         <p>{data.disasterType}Robbery</p>
         <p>
@@ -59,31 +91,37 @@ export default function HomeCrimeDetails({ ID, data }) {
         </GoogleMap>
       </LoadScript>
       <div className="buttons">
-        <button>
-          <img src="/more.svg" /> Go back
-        </button>
-        <button>
-          <img src="/spam.svg" />
-          Spam
-        </button>
-        <button>
-          <img src="/tick.svg" />
-          Approve
-        </button>
-      </div>
+          <Link href="/alert">
+            <button>
+              <img src="/more.svg" /> Go back
+            </button>
+          </Link>
+          <button onClick={()=>{spamReq()}}>
+            <img src="/spam.svg" />
+            Spam
+          </button>
+          <button onClick={()=>{ApproveReq()}}>
+            <img src="/tick.svg" />
+            Approve
+          </button>
+          <button onClick={()=>{ProcessReq()}}>
+            <img src="/tick.svg" />
+            Disaster Reported
+          </button>
+        </div>
     </div>
   );
 }
 
 export async function getServerSideProps(context) {
   const { params } = context;
-  const { homeCrimeID } = params;
-  const docref = doc(db, "homeCrime/" + disasterID);
+  const { homeCrime } = params;
+  const docref = doc(db, "homecrime/" + homeCrime);
   const docsnap = await getDoc(docref);
   console.log(docsnap.data());
   return {
     props: {
-      ID: disasterID,
+      ID: homeCrime,
       data: docsnap.data(),
     },
   };

@@ -49,7 +49,7 @@ const alert = ({ disasterListfromServer, homeCrimeListfromServer }) => {
     setDisasterList(tmpDisaster);
   };
   let getLatestDataHomeCrime = async () => {
-    const q = query(collection(db, "homeCrime"));
+    const q = query(collection(db, "homecrime"));
     // if(cityEntered != "") q = query(collection(db,"disaster"),where("city","==",cityEntered));
 
     const querySnapshot = await getDocs(q);
@@ -86,7 +86,10 @@ const alert = ({ disasterListfromServer, homeCrimeListfromServer }) => {
         {homeCrimeList.map((item) => {
           return (
             <div className="card">
-              <div className="card-title">{item.data.crimeType}</div>
+              <div className="card-title"> {" "}
+                <Link href={"/homeCrime/" + item.ID}>
+                  {item.data.disasterType}
+                </Link></div>
               <div className="card-description">{item.data.description}</div>
             </div>
           );
@@ -181,7 +184,7 @@ export async function getServerSideProps(context) {
     tmpDisaster.push({ ID: doc.id, data: doc.data() });
   });
   console.log(tmpDisaster);
-  const q2 = query(collection(db, "homeCrime"));
+  const q2 = query(collection(db, "homecrime"));
 
   const querySnapshot2 = await getDocs(q2);
   console.log(querySnapshot2.docs.length);
