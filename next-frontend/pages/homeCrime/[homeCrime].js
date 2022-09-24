@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { db } from "./../firebase";
 import Navbar from "../../components/navbar.js";
-import Link from 'next/link'
+import Link from "next/link";
 import {
   getFirestore,
   addDoc,
@@ -23,7 +23,7 @@ export default function HomeCrimeDetails({ ID, data }) {
   console.log(data);
   const containerStyle = {
     height: "60vh",
-    width: "calc(100%-48px)",
+    width: "calc(50%-48px)",
     marginTop: "20px",
     margin: "24px",
     // marginLeft: "200px",
@@ -38,78 +38,99 @@ export default function HomeCrimeDetails({ ID, data }) {
     lat: 37.772,
     lng: -122.214,
   });
-  
-  let spamReq = async () =>{
-    const q = query(collection(db, "users"),where("phoneNo","==","+919969534217"));
+
+  let spamReq = async () => {
+    const q = query(
+      collection(db, "users"),
+      where("phoneNo", "==", "+919969534217")
+    );
     const querySnapshot = await getDocs(q);
-    var creditScore = querySnapshot.docs[0].get("creditScore")-2;
-    const docref = doc(db,"users",querySnapshot.docs[0].id);
-    updateDoc(docref,{creditScore:creditScore});
+    var creditScore = querySnapshot.docs[0].get("creditScore") - 2;
+    const docref = doc(db, "users", querySnapshot.docs[0].id);
+    updateDoc(docref, { creditScore: creditScore });
     // const docref = doc(db,"users",querySnapshot.docs[0].id);
     // deleteDoc(docref);
-    const docref2 = doc(db,"homecrime",ID);
+    const docref2 = doc(db, "homecrime", ID);
     deleteDoc(docref2);
-  }
+  };
 
-  let ApproveReq = async () =>{
-    const q = query(collection(db, "users"),where("phoneNo","==","+919969534217"));
+  let ApproveReq = async () => {
+    const q = query(
+      collection(db, "users"),
+      where("phoneNo", "==", "+919969534217")
+    );
     const querySnapshot = await getDocs(q);
-    var creditScore = querySnapshot.docs[0].get("creditScore")+10;
-    const docref = doc(db,"users",querySnapshot.docs[0].id);
-    updateDoc(docref,{creditScore:creditScore,approve:true});
-  }
-  let ProcessReq = async () =>{
-    const docref2 = doc(db,"homecrime",ID);
+    var creditScore = querySnapshot.docs[0].get("creditScore") + 10;
+    const docref = doc(db, "users", querySnapshot.docs[0].id);
+    updateDoc(docref, { creditScore: creditScore, approve: true });
+  };
+  let ProcessReq = async () => {
+    const docref2 = doc(db, "homecrime", ID);
     deleteDoc(docref2);
-  }
+  };
   console.log(data);
   return (
-    <div className="disaster-main-container disaster-body">
-       {/* <Navbar index="2" /> */}
-      <div className="top">
-        <p>{data.disasterType}Robbery</p>
-        <p>
-          {data.description} orem, ipsum dolor sit amet consectetur adipisicing
-          elit. Rerum nostrum nemo veritatis consectetur temporibus, natus
-          officiis eveniet aliquid tempora inventore
-        </p>
-      </div>
-      <LoadScript
-        googleMapsApiKey="AIzaSyClwDKfzGV_7ICoib-lk2rH0iw5IlKW5Lw"
-        libraries={["places"]}
-      >
-        <GoogleMap
-          id="marker-example"
-          mapContainerStyle={containerStyle}
-          center={center}
-          zoom={16}
+    <>
+      <Navbar index="2" />
+      <div className="disaster-main-container disaster-body homeCrime-body">
+        <div className="top">
+          <p>{data.disasterType}Robbery</p>
+          <p>
+            {data.description} orem, ipsum dolor sit amet consectetur
+            adipisicing elit. Rerum nostrum nemo veritatis consectetur
+            temporibus, natus officiis eveniet aliquid tempora inventore
+          </p>
+        </div>
+        <LoadScript
+          googleMapsApiKey="AIzaSyClwDKfzGV_7ICoib-lk2rH0iw5IlKW5Lw"
+          libraries={["places"]}
         >
-          <MarkerF
-            // onLoad={onLoad}
-            position={center}
-          />
-        </GoogleMap>
-      </LoadScript>
-      <div className="buttons">
+          <GoogleMap
+            id="marker-example"
+            mapContainerStyle={containerStyle}
+            center={center}
+            zoom={16}
+          >
+            <MarkerF
+              // onLoad={onLoad}
+              position={center}
+            />
+          </GoogleMap>
+        </LoadScript>
+        <img src={data.imgUrl}></img>
+        <div className="buttons">
           <Link href="/alert">
             <button>
               <img src="/more.svg" /> Go back
             </button>
           </Link>
-          <button onClick={()=>{spamReq()}}>
+          <button
+            onClick={() => {
+              spamReq();
+            }}
+          >
             <img src="/spam.svg" />
             Spam
           </button>
-          <button onClick={()=>{ApproveReq()}}>
+          <button
+            onClick={() => {
+              ApproveReq();
+            }}
+          >
             <img src="/tick.svg" />
             Approve
           </button>
-          <button onClick={()=>{ProcessReq()}}>
+          <button
+            onClick={() => {
+              ProcessReq();
+            }}
+          >
             <img src="/tick.svg" />
             Disaster Reported
           </button>
         </div>
-    </div>
+      </div>
+    </>
   );
 }
 
