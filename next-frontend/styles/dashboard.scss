@@ -106,8 +106,9 @@ $bg-light-blue: #eff1fd;
         height: 50vh;
         img {
           width: 100%;
+          height: 100%;
         }
-        background-image: url("/graph_1.jpeg");
+        background-image: url("/graph_3.png");
         background-repeat: no-repeat;
         background-size: cover;
       }
@@ -115,9 +116,10 @@ $bg-light-blue: #eff1fd;
         height: 50vh;
         grid-area: six;
         img {
+          height: 100%;
           width: 100%;
         }
-        background-image: url("/graph_2.jpeg");
+        background-image: url("/graph_4.png");
         background-repeat: no-repeat;
         background-size: cover;
       }
