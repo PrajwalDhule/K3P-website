@@ -83,8 +83,12 @@ $bg-light-blue: #eff1fd;
           display: flex;
           align-items: center;
           color: black;
+          // border: 2px solid black;
           p {
             margin-left: 10px;
+          }
+          &:hover{
+            background-color: #919191;
           }
         }
       }

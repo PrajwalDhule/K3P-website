@@ -97,6 +97,10 @@
   margin-left: 10px;
 }
 
+.safezone-body .top .search .dataResult .dataItem:hover {
+  background-color: #919191;
+}
+
 .safezone-body .top .search:hover .dataResult {
   display: block;
 }

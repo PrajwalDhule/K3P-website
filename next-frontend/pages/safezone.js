@@ -140,6 +140,7 @@ const Safezone = (disasterListfromServer) => {
                   <div
                     className="dataItem"
                     target="_blank"
+                    onClick={(e)=>{setEventID(value.disasterID); setFilteredData([]); setWordEntered(value.disasterDesc.description)}}
                   >
                     <p>{value.disasterDesc.description} </p>
                   </div>
