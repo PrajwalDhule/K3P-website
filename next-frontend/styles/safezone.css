@@ -58,7 +58,7 @@ input {
 .footer .address p:nth-child(2) {
   margin-top: 1em;
   border-radius: 5px;
-  border: 1px solid black;
+  border: 1px solid rgb(176, 176, 176);
   padding: 0.5em 0.75em;
 }
 .footer .right {
@@ -132,7 +132,6 @@ input {
 }
 .search .dataResult .dataItem {
   width: 100%;
-  height: 50px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -141,10 +140,16 @@ input {
   color: black;
 }
 .search .dataResult .dataItem p {
-  margin-left: 10px;
+  padding: 0 0.5em;
+  margin: 20px 0;
 }
 .search .dataResult .dataItem:hover {
   background-color: #919191;
+}
+.search .dataResult .dataItem .line {
+  height: 2px;
+  width: 100%;
+  background-color: black;
 }
 .search:hover .dataResult {
   display: block;

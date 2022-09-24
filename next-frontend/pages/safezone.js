@@ -90,9 +90,13 @@ const Safezone = (disasterListfromServer) => {
     console.log(disasterListfromServer.disasterListfromServer);
     const searchWord = event.target.value;
     setWordEntered(searchWord);
-    const newFilter = disasterListfromServer.disasterListfromServer.data.filter((value) => {
-      return value.disasterDesc.description.toLowerCase().includes(searchWord.toLowerCase());
-    });
+    const newFilter = disasterListfromServer.disasterListfromServer.data.filter(
+      (value) => {
+        return value.disasterDesc.description
+          .toLowerCase()
+          .includes(searchWord.toLowerCase());
+      }
+    );
     console.log(newFilter);
     if (searchWord === "") {
       setFilteredData([]);
@@ -140,10 +144,14 @@ const Safezone = (disasterListfromServer) => {
                   <div
                     className="dataItem"
                     target="_blank"
-                    onClick={(e)=>{setEventID(value.disasterID); setFilteredData([]); setWordEntered(value.disasterDesc.description)}}
+                    onClick={(e) => {
+                      setEventID(value.disasterID);
+                      setFilteredData([]);
+                      setWordEntered(value.disasterDesc.description);
+                    }}
                   >
                     <p>{value.disasterDesc.description} </p>
-                    
+                    <div className="line"></div>
                   </div>
                 );
               })}
@@ -326,27 +334,26 @@ const Safezone = (disasterListfromServer) => {
 
 export default Safezone;
 
-
 export async function getServerSideProps(context) {
   const q = query(collection(db, "disaster"));
-  
+
   const querySnapshot = await getDocs(q);
-  console.log(querySnapshot.docs.length)
+  console.log(querySnapshot.docs.length);
   var tmpDisaster = [];
-  console.log(typeof(tmpDisaster)+" askjxnjkas");
+  console.log(typeof tmpDisaster + " askjxnjkas");
   querySnapshot.docs.forEach((doc) => {
     var data = {
-      disasterID:doc.id,
-      disasterDesc:doc.data("description"),
-    }
+      disasterID: doc.id,
+      disasterDesc: doc.data("description"),
+    };
     tmpDisaster.push(data);
   });
 
   console.log(tmpDisaster);
-  console.log(typeof(tmpDisaster));
+  console.log(typeof tmpDisaster);
   return {
     props: {
-      disasterListfromServer: {data:tmpDisaster},
+      disasterListfromServer: { data: tmpDisaster },
     },
   };
 }
