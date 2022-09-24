@@ -16,6 +16,7 @@ import {
   where,
   getDoc,
   updateDoc,
+  doc,
   getDocs,
 } from "firebase/firestore";
 
@@ -37,11 +38,16 @@ const Safezone = (disasterListfromServer) => {
 
   const uploadDonation = async () => {
     try {
+        const docref2 = doc(db, "disaster", eventID);
+        const data2 = await getDoc(docref2);
+        
       const docRef = await addDoc(collection(db, "donation"), {
         disasterID: eventID,
         organization: organization,
         donationLink: payment,
         contact: contact,
+        disasterDesc: data2.get("description"),
+        disasterType: data2.get("disasterType")
       });
       console.log("Document updated with ID: ", docRef.id);
     } catch (e) {
@@ -180,7 +186,7 @@ export async function getServerSideProps(context) {
   const querySnapshot = await getDocs(q);
   console.log(querySnapshot.docs.length);
   var tmpDisaster = [];
-  console.log(typeof tmpDisaster + " askjxnjkas");
+//   console.log(typeof tmpDisaster + " askjxnjkas");
   querySnapshot.docs.forEach((doc) => {
     var data = {
       disasterID: doc.id,
