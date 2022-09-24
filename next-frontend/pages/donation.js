@@ -38,7 +38,7 @@ const Safezone = (disasterListfromServer) => {
 
   const uploadDonation = async () => {
     try {
-      const docRef = await addDoc(collection(db, "safezone"), {
+      const docRef = await addDoc(collection(db, "donation"), {
         disasterID: eventID,
         organization:organization,
         donationLink:payment,
