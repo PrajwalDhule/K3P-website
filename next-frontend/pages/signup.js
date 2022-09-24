@@ -106,6 +106,9 @@ const Signup = (props) => {
           </form>
         </div>
       </div>
+      <div className="shape1"></div>
+      <div className="shape2"></div>
+      <div className="shape3"></div>
     </div>
   );
 };

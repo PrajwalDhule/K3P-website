@@ -60,6 +60,17 @@ const Navbar = (props) => {
               <p>Profile</p>
             </li>
           </Link>
+          <Link
+            href="/donation"
+            onClick={() => {
+              setShow("show-5");
+            }}
+          >
+            <li className={`hide ${show}-5`}>
+              <img src="/donation.svg"></img>
+              <p>Donation</p>
+            </li>
+          </Link>
         </div>
       </div>
     </div>

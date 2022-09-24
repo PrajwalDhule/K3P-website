@@ -239,4 +239,47 @@ button {
 .box .right .right-container input[type="submit"]:hover {
   background-color: #4772df;
 }
+
+.shape1 {
+  position: absolute;
+  height: 25vh;
+  width: 25vh;
+  bottom: 0;
+  left: 0;
+  border-radius: 15px;
+  border: 5px solid #0f38dd;
+  opacity: 0.2;
+  background-color: transparent;
+  -webkit-transform: rotateZ(35deg) translate(-40%, 30%);
+          transform: rotateZ(35deg) translate(-40%, 30%);
+}
+
+.shape2 {
+  position: absolute;
+  height: 25vh;
+  width: 25vh;
+  top: 0;
+  left: 10%;
+  border-radius: 15px;
+  border: 5px solid #0f38dd;
+  opacity: 0.2;
+  background-color: transparent;
+  -webkit-transform: rotateZ(35deg) translate(-40%, -65%);
+          transform: rotateZ(35deg) translate(-40%, -65%);
+}
+
+.shape3 {
+  z-index: -1;
+  position: absolute;
+  height: 30vh;
+  width: 30vh;
+  top: 0;
+  right: 0;
+  border-radius: 15px;
+  border: 5px solid #0f38dd;
+  opacity: 0.2;
+  background-color: transparent;
+  -webkit-transform: rotateZ(35deg) translate(20%, 0%);
+          transform: rotateZ(35deg) translate(20%, 0%);
+}
 /*# sourceMappingURL=signup.css.map */
