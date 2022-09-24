@@ -4,49 +4,33 @@
   width: 100vw;
   background-color: #eff1fd;
 }
-
 .donation-body .footer {
   background-color: transparent;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-align: start;
-      -ms-flex-align: start;
-          align-items: flex-start;
+  flex-direction: column;
+  align-items: flex-start;
 }
-
 .donation-body .footer .right:nth-child(1) {
   margin-top: 7.5em;
 }
-
 .donation-body .footer .right {
   width: 100%;
 }
-
 .donation-body .footer .right input {
   width: 75%;
   margin-bottom: 2em;
   padding: 1em;
 }
-
 .donation-body .footer .right button {
   font-weight: 600;
   padding: 1em 2em;
   font-size: 1rem;
 }
-
 .donation-body .footer .right button:hover {
-  background-color: #ababf8;
+  background-color: rgb(171, 171, 248);
 }
-
 .donation-body .search .search-inputs {
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  justify-content: space-between;
 }
-
 .donation-body .search .search-inputs input {
   width: 70% !important;
-}
-/*# sourceMappingURL=donation.css.map */
+}/*# sourceMappingURL=donation.css.map */

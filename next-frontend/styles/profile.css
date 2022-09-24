@@ -4,69 +4,47 @@
   width: 100vw;
   background-color: #eff1fd;
 }
-
 .profile-body .profile-container {
   width: 80%;
   height: 100%;
   margin-left: 20%;
   padding: 2em;
 }
-
 .profile-body .profile-container .name {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  flex-direction: column;
+  justify-content: center;
 }
-
 .profile-body .profile-container .pfp {
   border: 2px solid black;
   border-radius: 50%;
   margin-right: 1em;
 }
-
 .profile-body .profile-container .main {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
 }
-
 .profile-body .profile-container .main p {
   font-size: 1.5rem;
   font-weight: 500;
 }
-
 .profile-body .profile-container .main p + p {
   margin-top: 0.5em;
 }
-
 .profile-body .profile-container .main img {
   height: 9em;
   border-radius: 50%;
 }
-
 .profile-body .profile-container .content {
   padding-top: 1em;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
 }
-
 .profile-body .profile-container .content .left {
   margin-right: 5em;
 }
-
 .profile-body .profile-container .content .field p:nth-child(1) {
   font-weight: 700;
   font-size: 1.25rem;
 }
-
 .profile-body .profile-container .content .field p:nth-child(2) {
   border: 1px solid black;
   border-radius: 5px;
@@ -75,8 +53,6 @@
   margin-top: 0.5em;
   background-color: white;
 }
-
 .profile-body .profile-container .content .field {
   margin-bottom: 1em;
-}
-/*# sourceMappingURL=profile.css.map */
+}/*# sourceMappingURL=profile.css.map */

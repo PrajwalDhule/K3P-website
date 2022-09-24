@@ -7,24 +7,20 @@
   top: 0;
   z-index: 1;
 }
-
 .safezone-body .top {
   top: 0;
   position: relative;
   height: 10vh;
 }
-
 .safezone-body .top select {
   margin-left: 50vw;
 }
-
 .safezone-body .chart {
   width: 95%;
   position: absolute;
   top: 55%;
   left: 50%;
-  -webkit-transform: translate(-50%, -50%);
-          transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
 }
 
 .dataResult::-webkit-scrollbar {
@@ -34,7 +30,6 @@
 p {
   text-decoration: none;
 }
-
 p:hover {
   cursor: pointer;
 }
@@ -49,63 +44,43 @@ input {
 
 .footer {
   background-color: white;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  justify-content: space-between;
   padding: 1.5em;
   min-height: 30vh;
 }
-
 .footer .address {
   max-width: 65%;
 }
-
 .footer .address p:nth-child(1) {
   font-weight: 600;
 }
-
 .footer .address p:nth-child(2) {
   margin-top: 1em;
   border-radius: 5px;
   border: 1px solid black;
   padding: 0.5em 0.75em;
 }
-
 .footer .right {
   height: 100%;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }
-
 .footer .right input {
   border: 2px solid black;
   padding: 0.25em 0.5em;
   font-size: 1.2rem;
   border-radius: 5px;
 }
-
 .footer .right button {
   margin-top: 1em;
   padding: 0.5em 1em;
   background-color: #eff1fd;
   border: none;
   border-radius: 5px;
-  -webkit-filter: drop-shadow(-2px 2px 5px rgba(0, 0, 0, 0.5));
-          filter: drop-shadow(-2px 2px 5px rgba(0, 0, 0, 0.5));
+  filter: drop-shadow(-2px 2px 5px rgba(0, 0, 0, 0.5));
 }
 
 .search {
@@ -115,26 +90,17 @@ input {
   width: 30vw;
   top: 1em;
   left: 50%;
-  -webkit-transform: translateX(-50%);
-          transform: translateX(-50%);
+  transform: translateX(-50%);
   border: 1px solid black;
   border-radius: 5px;
   padding: 0.5em;
 }
-
 .search .searchInputs {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  justify-content: space-between;
+  align-items: center;
   width: 100%;
 }
-
 .search .searchInputs input {
   border: none;
   background-color: transparent;
@@ -143,55 +109,43 @@ input {
   height: 30px;
   color: black;
 }
-
 .search .searchInputs input:focus {
   outline: none;
 }
-
 .search .searchIcon {
   width: 50px;
   background-color: transparent;
-  display: -ms-grid;
   display: grid;
   place-items: center;
-  -webkit-transform: translateX(-10%);
-          transform: translateX(-10%);
+  transform: translateX(-10%);
 }
-
 .search .dataResult {
   display: none;
   margin-top: 5px;
   width: 100%;
   height: 200px;
   background-color: white;
-  -webkit-box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-          box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
   overflow-x: hidden;
   border-radius: 5px;
-  border: 1px solid black;
+  border: 1px solid rgb(0, 0, 0);
 }
-
 .search .dataResult .dataItem {
   width: 100%;
   height: 50px;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 12px;
+  margin-top: 12px;
   color: black;
 }
-
 .search .dataResult .dataItem p {
   margin-left: 10px;
 }
-
 .search .dataResult .dataItem:hover {
   background-color: #919191;
 }
-
 .search:hover .dataResult {
   display: block;
-}
-/*# sourceMappingURL=safezone.css.map */
+}/*# sourceMappingURL=safezone.css.map */

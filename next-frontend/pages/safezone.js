@@ -143,6 +143,7 @@ const Safezone = (disasterListfromServer) => {
                     onClick={(e)=>{setEventID(value.disasterID); setFilteredData([]); setWordEntered(value.disasterDesc.description)}}
                   >
                     <p>{value.disasterDesc.description} </p>
+                    
                   </div>
                 );
               })}
