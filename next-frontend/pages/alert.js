@@ -2,9 +2,16 @@ import React, { useState } from "react";
 import Navbar from "../components/navbar";
 import Switch from "./../components/switch";
 import { db } from "./firebase";
-import { getFirestore, addDoc, collection, query, getDocs, where } from "firebase/firestore";
+import {
+  getFirestore,
+  addDoc,
+  collection,
+  query,
+  getDocs,
+  where,
+} from "firebase/firestore";
 import { async } from "@firebase/util";
-import Link from 'next/link';
+import Link from "next/link";
 /**
  *
  * @Params for home crime
@@ -22,45 +29,50 @@ import Link from 'next/link';
  * current
  * description
  */
-const alert = ({disasterListfromServer,homeCrimeListfromServer}) => {
+const alert = ({ disasterListfromServer, homeCrimeListfromServer }) => {
   const [cityEntered, setCityEntered] = useState("");
   const [disasterType, setDisasterType] = useState(true);
   const [disasterList, setDisasterList] = useState(disasterListfromServer);
   const [homeCrimeList, setHomeCrimeList] = useState(homeCrimeListfromServer);
 
-  let getLatestDataDisaster = async () =>  {
+  let getLatestDataDisaster = async () => {
     const q = query(collection(db, "disaster"));
     // if(cityEntered != "") q = query(collection(db,"disaster"),where("city","==",cityEntered));
-  
+
     const querySnapshot = await getDocs(q);
-    console.log(querySnapshot.docs.length)
+    console.log(querySnapshot.docs.length);
     var tmpDisaster = [];
     querySnapshot.forEach((doc) => {
       tmpDisaster.push(doc.data());
     });
     console.log(tmpDisaster);
     setDisasterList(tmpDisaster);
-  }
-  let getLatestDataHomeCrime = async () =>  {
+  };
+  let getLatestDataHomeCrime = async () => {
     const q = query(collection(db, "homeCrime"));
     // if(cityEntered != "") q = query(collection(db,"disaster"),where("city","==",cityEntered));
-  
+
     const querySnapshot = await getDocs(q);
-    console.log(querySnapshot.docs.length)
+    console.log(querySnapshot.docs.length);
     var tmpHomeCrime = [];
     querySnapshot.forEach((doc) => {
       tmpHomeCrime.push(doc.data());
     });
     console.log(tmpHomeCrime);
     setHomeCrimeList(tmpHomeCrime);
-  }
+  };
   function DisasterList() {
     return (
       <div>
         {disasterList.map((item) => {
           return (
             <div className="card">
-              <div className="card-title"> <Link href={"/disaster/"+item.ID}>{item.data.disasterType}</Link></div>
+              <div className="card-title">
+                {" "}
+                <Link href={"/disaster/" + item.ID}>
+                  {item.data.disasterType}
+                </Link>
+              </div>
               <div className="card-description">{item.data.description}</div>
             </div>
           );
@@ -90,33 +102,34 @@ const alert = ({disasterListfromServer,homeCrimeListfromServer}) => {
         </div>
       );
     else
-    return (
-      <div className="alert-list-container">
+      return (
+        <div className="alert-list-container">
           <DisasterList />
         </div>
       );
   }
 
-  let submitQuery = (e) =>{
-      if(disasterType) getLatestDataDisaster();
-      else getLatestDataHomeCrime();
-  }
+  let submitQuery = (e) => {
+    if (disasterType) getLatestDataDisaster();
+    else getLatestDataHomeCrime();
+  };
   // getLatestDataDisaster();
   return (
     <div style={{ width: "100vw", height: "100vh" }} className="alert-body">
       <Navbar index="2" />
       <div className="top">
         <div className="search">
-          <div className="searchInputs">
-            <input
-              type="text"
-              placeholder={"Enter city"}
-              value={cityEntered}
-              onChange={(e) => {
-                setCityEntered(e.target.value);
-              }}
-            />
-            {/* <div className="searchIcon">
+          <div className="top-item">
+            <div className="searchInputs">
+              <input
+                type="text"
+                placeholder={"Enter city"}
+                value={cityEntered}
+                onChange={(e) => {
+                  setCityEntered(e.target.value);
+                }}
+              />
+              {/* <div className="searchIcon">
                 {filteredData.length === 0 ? (
                   // <SearchIcon />
                   <p>search</p>
@@ -127,16 +140,21 @@ const alert = ({disasterListfromServer,homeCrimeListfromServer}) => {
                   </p>
                 )}
               </div> */}
+            </div>
+            <div className="button" onClick={(e) => submitQuery(e)}>
+              Submit
+            </div>
           </div>
-          <div className="button" onClick={(e)=>submitQuery(e)}>Submit</div>
-          <div>Disaster</div>
-          <div style={{ display: "flex", alignItems: "center" }}>
-            <Switch
-              isOn={disasterType}
-              handleToggle={() => setDisasterType(!disasterType)}
-            />
+          <div className="top-item">
+            <div className="disaster">Disaster</div>
+            <div style={{ display: "flex", alignItems: "center" }}>
+              <Switch
+                isOn={disasterType}
+                handleToggle={() => setDisasterType(!disasterType)}
+              />
+            </div>
+            <div className="homeCrime">Home Crime</div>
           </div>
-          <div>Home Crime</div>
         </div>
       </div>
       <List />
@@ -146,8 +164,6 @@ const alert = ({disasterListfromServer,homeCrimeListfromServer}) => {
 
 export default alert;
 
-
-
 export async function getServerSideProps(context) {
   // const res = await axios.get(
   //   "http://localhost:4000/api/getvendingzones/search"
@@ -155,32 +171,32 @@ export async function getServerSideProps(context) {
   // // console.log(res);
   // const data = await JSON.parse(JSON.stringify(res.data));
   const q = query(collection(db, "disaster"));
-  
+
   const querySnapshot = await getDocs(q);
-  console.log(querySnapshot.docs.length)
+  console.log(querySnapshot.docs.length);
   var tmpDisaster = [];
   querySnapshot.forEach((doc) => {
     // doc.data() is never undefined for query doc snapshots
     // console.log(doc.id, " => ", doc.data());
-    tmpDisaster.push({ID:doc.id,data:doc.data()});
+    tmpDisaster.push({ ID: doc.id, data: doc.data() });
   });
   console.log(tmpDisaster);
   const q2 = query(collection(db, "homeCrime"));
-  
+
   const querySnapshot2 = await getDocs(q2);
-  console.log(querySnapshot2.docs.length)
+  console.log(querySnapshot2.docs.length);
   var tmpHomeCrime = [];
   querySnapshot2.forEach((doc) => {
     // doc.data() is never undefined for query doc snapshots
     // console.log(doc.id, " => ", doc.data());
-    tmpHomeCrime.push({ID:doc.id,data:doc.data()});
+    tmpHomeCrime.push({ ID: doc.id, data: doc.data() });
   });
   console.log(tmpHomeCrime);
   // setDisasterList(tmpDisaster);
   return {
     props: {
       disasterListfromServer: tmpDisaster,
-      homeCrimeListfromServer: tmpHomeCrime
+      homeCrimeListfromServer: tmpHomeCrime,
     },
   };
 }

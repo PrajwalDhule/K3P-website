@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Navbar from "../../components/navbar.js";
 import { db } from "./../firebase";
+import Link from "next/link";
 import {
   getFirestore,
   addDoc,
@@ -71,9 +72,11 @@ export default function DisasterDetails({ ID, data }) {
           </GoogleMap>
         </LoadScript>
         <div className="buttons">
-          <button>
-            <img src="/more.svg" /> Go back
-          </button>
+          <Link href="/alert">
+            <button>
+              <img src="/more.svg" /> Go back
+            </button>
+          </Link>
           <button>
             <img src="/spam.svg" />
             Spam
