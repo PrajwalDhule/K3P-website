@@ -26,7 +26,7 @@ import {
   getDocs,
 } from "firebase/firestore";
 
-const Safezone = () => {
+const Safezone = (disasterListfromServer) => {
   const [filteredData, setFilteredData] = useState([]);
   const [wordEntered, setWordEntered] = useState("");
   const [category, setCategory] = useState("");
@@ -36,7 +36,12 @@ const Safezone = () => {
   const [contact, setContact] = React.useState("");
   const [zone, setZone] = React.useState("");
   const [eventID, setEventID] = React.useState("#E123245");
-  const data = Records;
+  // const data = Records;
+
+  // console.log(disasterListfromServer.disasterListfromServer.data);
+  // disasterListfromServer.disasterListfromServer.data.map((i)=>{
+  //   console.log(i);
+  // })
   Geocode.setApiKey("AIzaSyClwDKfzGV_7ICoib-lk2rH0iw5IlKW5Lw");
   Geocode.enableDebug();
   // Map params
@@ -82,11 +87,13 @@ const Safezone = () => {
   };
 
   const handleFilter = (event) => {
+    console.log(disasterListfromServer.disasterListfromServer);
     const searchWord = event.target.value;
     setWordEntered(searchWord);
-    const newFilter = data.filter((value) => {
-      return value.Name?.toLowerCase().includes(searchWord.toLowerCase());
+    const newFilter = disasterListfromServer.disasterListfromServer.data.filter((value) => {
+      return value.disasterDesc.description.toLowerCase().includes(searchWord.toLowerCase());
     });
+    console.log(newFilter);
     if (searchWord === "") {
       setFilteredData([]);
     } else {
@@ -126,15 +133,16 @@ const Safezone = () => {
           {filteredData.length != 0 && (
             <div className="dataResult">
               {filteredData.slice(0, 15).map((value) => {
+                var desc = value.disasterDesc.description.toString();
+                console.log(value.disasterDesc.description);
+                console.log("dcsksdcaad");
                 return (
-                  <p
+                  <div
                     className="dataItem"
-                    value={value.Name}
-                    onClick={() => handleClick(value.Name)}
                     target="_blank"
                   >
-                    <p>{value.Name} </p>
-                  </p>
+                    <p>{value.disasterDesc.description} </p>
+                  </div>
                 );
               })}
             </div>
@@ -315,3 +323,28 @@ const Safezone = () => {
 };
 
 export default Safezone;
+
+
+export async function getServerSideProps(context) {
+  const q = query(collection(db, "disaster"));
+  
+  const querySnapshot = await getDocs(q);
+  console.log(querySnapshot.docs.length)
+  var tmpDisaster = [];
+  console.log(typeof(tmpDisaster)+" askjxnjkas");
+  querySnapshot.docs.forEach((doc) => {
+    var data = {
+      disasterID:doc.id,
+      disasterDesc:doc.data("description"),
+    }
+    tmpDisaster.push(data);
+  });
+
+  console.log(tmpDisaster);
+  console.log(typeof(tmpDisaster));
+  return {
+    props: {
+      disasterListfromServer: {data:tmpDisaster},
+    },
+  };
+}
