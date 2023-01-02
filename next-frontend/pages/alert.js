@@ -66,7 +66,7 @@ const Alert = ({ disasterListfromServer, homeCrimeListfromServer }) => {
       <div>
         {disasterList.map((item) => {
           return (
-            <div className="card">
+            <div className="card" key={item.ID}>
               <div className="card-title">
                 {" "}
                 <Link href={"/disaster/" + item.ID}>
