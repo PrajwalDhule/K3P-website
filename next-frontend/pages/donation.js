@@ -5,7 +5,7 @@ import Navbar from "../components/navbar";
 // import BarChart from "./BarChart";
 // import Profile from "./Profile";
 import Records from "./data.json";
-import { db } from "./firebase";
+import { db } from "../components/firebase";
 import {
   getFirestore,
   addDoc,
@@ -111,6 +111,7 @@ const Safezone = (disasterListfromServer) => {
                 console.log("dcsksdcaad");
                 return (
                   <div
+                    key={value.disasterID}
                     className="dataItem"
                     target="_blank"
                     onClick={(e) => {

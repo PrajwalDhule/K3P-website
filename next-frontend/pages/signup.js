@@ -2,7 +2,7 @@ import React, { useState, useContext, useEffect } from "react";
 import Link from "next/link";
 import { useRouter } from "next/router";
 // import { FirebaseApp } from "firebase/app";
-import { db } from "./firebase";
+import { db } from "../components/firebase";
 import { getFirestore, addDoc, collection } from "firebase/firestore";
 import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 import { async } from "@firebase/util";

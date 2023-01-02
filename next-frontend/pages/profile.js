@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Link from "next/link";
 import Navbar from "../components/navbar";
 
-const profile = () => {
+const Profile = () => {
   return (
     <div className="profile-body">
       <Navbar index="4" />
@@ -56,4 +56,4 @@ const profile = () => {
   );
 };
 
-export default profile;
+export default Profile;

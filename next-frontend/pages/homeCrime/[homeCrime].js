@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { db } from "./../firebase";
+import { db } from "../../components/firebase";
 import Navbar from "../../components/navbar.js";
 import Link from "next/link";
 import {

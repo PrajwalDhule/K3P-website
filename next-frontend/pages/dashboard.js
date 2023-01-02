@@ -3,7 +3,7 @@ import Navbar from "../components/navbar";
 import { Line } from "react-chartjs-2";
 import Records from "../other/data.json";
 
-const dashboard = () => {
+const Dashboard = () => {
   //function to get values from certain person's data
   function getData(person) {
     const newFilter = Records.filter((value) => {
@@ -184,4 +184,4 @@ const dashboard = () => {
   );
 };
 
-export default dashboard;
+export default Dashboard;

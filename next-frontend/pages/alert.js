@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Navbar from "../components/navbar";
 import Switch from "./../components/switch";
-import { db } from "./firebase";
+import { db } from "../components/firebase";
 import {
   getFirestore,
   addDoc,
@@ -29,7 +29,7 @@ import Link from "next/link";
  * current
  * description
  */
-const alert = ({ disasterListfromServer, homeCrimeListfromServer }) => {
+const Alert = ({ disasterListfromServer, homeCrimeListfromServer }) => {
   const [cityEntered, setCityEntered] = useState("");
   const [disasterType, setDisasterType] = useState(true);
   const [disasterList, setDisasterList] = useState(disasterListfromServer);
@@ -66,7 +66,7 @@ const alert = ({ disasterListfromServer, homeCrimeListfromServer }) => {
       <div>
         {disasterList.map((item) => {
           return (
-            <div className="card">
+            <div className="card" key={item.ID}>
               <div className="card-title">
                 {" "}
                 <Link href={"/disaster/" + item.ID}>
@@ -85,7 +85,7 @@ const alert = ({ disasterListfromServer, homeCrimeListfromServer }) => {
       <div>
         {homeCrimeList.map((item) => {
           return (
-            <div className="card">
+            <div className="card" key={item.ID}>
               <div className="card-title"> {" "}
                 <Link href={"/homeCrime/" + item.ID}>
                   {item.data.disasterType}
@@ -165,7 +165,7 @@ const alert = ({ disasterListfromServer, homeCrimeListfromServer }) => {
   );
 };
 
-export default alert;
+export default Alert;
 
 export async function getServerSideProps(context) {
   // const res = await axios.get(

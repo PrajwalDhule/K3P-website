@@ -12,7 +12,7 @@ import {
   Autocomplete,
 } from "@react-google-maps/api";
 import Geocode, { setApiKey } from "react-geocode";
-import { db } from "./firebase";
+import { db } from "../components/firebase";
 import {
   getFirestore,
   addDoc,
@@ -142,6 +142,7 @@ const Safezone = (disasterListfromServer) => {
                 console.log("dcsksdcaad");
                 return (
                   <div
+                  key={value.disasterID}
                     className="dataItem"
                     target="_blank"
                     onClick={(e) => {
