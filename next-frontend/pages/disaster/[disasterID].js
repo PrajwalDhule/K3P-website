@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Navbar from "../../components/navbar.js";
-import { db } from "./../firebase";
+import { db } from "../../components/firebase";
 import Link from "next/link";
 import {
   getFirestore,

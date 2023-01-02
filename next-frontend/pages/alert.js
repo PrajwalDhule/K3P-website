@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Navbar from "../components/navbar";
 import Switch from "./../components/switch";
-import { db } from "./firebase";
+import { db } from "../components/firebase";
 import {
   getFirestore,
   addDoc,
