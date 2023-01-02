@@ -142,6 +142,7 @@ const Safezone = (disasterListfromServer) => {
                 console.log("dcsksdcaad");
                 return (
                   <div
+                  key={value.disasterID}
                     className="dataItem"
                     target="_blank"
                     onClick={(e) => {

@@ -29,7 +29,7 @@ import Link from "next/link";
  * current
  * description
  */
-const alert = ({ disasterListfromServer, homeCrimeListfromServer }) => {
+const Alert = ({ disasterListfromServer, homeCrimeListfromServer }) => {
   const [cityEntered, setCityEntered] = useState("");
   const [disasterType, setDisasterType] = useState(true);
   const [disasterList, setDisasterList] = useState(disasterListfromServer);
@@ -165,7 +165,7 @@ const alert = ({ disasterListfromServer, homeCrimeListfromServer }) => {
   );
 };
 
-export default alert;
+export default Alert;
 
 export async function getServerSideProps(context) {
   // const res = await axios.get(
